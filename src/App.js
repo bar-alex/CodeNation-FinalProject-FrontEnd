@@ -13,7 +13,6 @@ function App() {
   return (
     <div className="App">
       <h1>{!isLoggedIn ? "Login" : isLoggedIn} </h1>
-      {!isLoggedIn && <LogUser setIsLoggedIn={setIsLoggedIn} />}
 
       <div className='container'>
 
