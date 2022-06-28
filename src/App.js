@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
+
 import './App.css';
 
 function App() {
+
+  // Here is a list of variables with states and that allow users to control their accounts
+  // LogUser allows us to call on the login componenent/route. If we aren't logged in, show a login bar.
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [createUser, setCreateUser] = useState();
+  const [deleteUser, setDeleteUser] = useState();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>{!isLoggedIn ? "Login" : isLoggedIn} </h1>
+      {!isLoggedIn && <LogUser setIsLoggedIn={setIsLoggedIn} />}
+
+      <div className='container'>
+
+      </div>
     </div>
   );
 }
