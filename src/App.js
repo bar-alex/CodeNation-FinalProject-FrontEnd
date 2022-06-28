@@ -1,10 +1,18 @@
-//import React, { useState, useEffect } from 'react';
-import './App.css';
+import Achievements from "./components/Achievements";
+import Activities from "./components/Activities";
+import Challenges from "./components/Challenges";
+import Routes from "./components/Routes";
 
-const  App = () => {
+function App() {
   return (
-    <div className="App">
-      <h1>Fitness App</h1>
+    <div>
+      fitness app
+      <div>
+        <Achievements />
+        <Activities />
+        <Challenges />
+        <Routes />
+      </div>
     </div>
   );
 };
