@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { login } from "../utils/routes";
 
-export const LogInUser = ( { setIsLoggedIn, isLoggedIn } ) => {
+const LogInUser = ( { setIsLoggedIn, isLoggedIn } ) => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
@@ -19,3 +19,5 @@ export const LogInUser = ( { setIsLoggedIn, isLoggedIn } ) => {
           </form>
       )
 };
+
+export default LogInUser;
