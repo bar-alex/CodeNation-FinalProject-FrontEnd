@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LogInUser } from './components/LogInUser';
+import { LogInUser } from './components/LogInUser.js';
 import './App.css';
 
 function App() {
