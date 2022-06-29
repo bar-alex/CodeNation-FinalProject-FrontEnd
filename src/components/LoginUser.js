@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const LoginUser = () => {
+export const LoginUser = ( { setIsLoggedIn, isLoggedIn } ) => {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
 
