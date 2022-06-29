@@ -10,10 +10,10 @@ import Routes from "./components/Routes";
 const App = () => {
 
   // chartTitle,         // string or empty -- the title of the chart
-  const horizontalLabels = ['x', 'y', 'z', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  const verticalLabel = 'Distance X';
-  // const verticalValues = [54, 14, 71, 32, 7, 59, 42];
-  const verticalValues = [];
+  // const horizontalLabels = ['x', 'y', 'z', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  // const verticalLabel = 'Distance X';
+  // // const verticalValues = [54, 14, 71, 32, 7, 59, 42];
+  // const verticalValues = [];
 
   return (
     <div>
@@ -25,14 +25,15 @@ const App = () => {
         <Routes />
       </div>
       <div style={{ position: "relative", margin: "auto", width: "40vw" }}>
+      <LineChart />
+      {/* <div style={{ position: "relative", margin: "auto", width: "40vw" }}> */}
       {/* <h2>L<VerticalBarChart /></h2> */}
 
-      <LineChart horizontalLabels={horizontalLabels} verticalLabel={verticalLabel} verticalValues={verticalValues}/>
+      {/* <LineChart horizontalLabels={horizontalLabels} verticalLabel={verticalLabel} verticalValues={verticalValues}/> */}
       </div>
-
-
       {/* <VerticalBarChart /> */}
-      {/* <LineChart /> */}
+      {/* <div style={{ position: "relative", margin: "auto", width: "40vw" }}>
+      <LineChart /> */}
     </div>
   );
 };
