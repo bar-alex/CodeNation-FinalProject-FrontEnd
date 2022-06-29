@@ -6,7 +6,7 @@ const LoginUser = ( { user, setUser } ) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log("login user - ", username, fullName, email, password);
+        console.log("login user - ", username, password);
         console.log("ToDo: LoginUser -> loginUser( {user}, setUser )")
     };
     

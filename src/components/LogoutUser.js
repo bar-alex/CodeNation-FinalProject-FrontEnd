@@ -6,7 +6,7 @@ const LogoutUser = ( { user, token, setUser } ) => {
     const submitHandler = (e) => {
         e.preventDefault();
         console.log("logout user - ", username, token);
-        console.log("ToDo: LogoutUser -> logoutUser( {user}, setUser, token )")
+        console.log("ToDo: LogoutUser -> logoutUser( remove token )")
     };
     
     return(
