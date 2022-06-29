@@ -14,10 +14,11 @@ const UpdateUser = ( { user, token, setUser, } ) => {
     return(
         <div>
             <form onSubmit={submitHandler}>
-                <input onChange={(e) => setFullName(e.target.value)} />
-                <input onChange={(e) => setEmail(e.target.value)} />
-                <input onChange={(e) => setPassword(e.target.value)} />
-                <button type="submit">Update Account</button>
+            { user && <div><p>Update Account?</p></div>}
+            { user && <input onChange={(e) => setFullName(e.target.value)} />}
+            { user && <input onChange={(e) => setEmail(e.target.value)} />}
+            { user && <input onChange={(e) => setPassword(e.target.value)} />}
+            { user && <button type="submit">Update Account</button>}
             </form>
         </div>
     )

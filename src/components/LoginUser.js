@@ -12,9 +12,10 @@ const LoginUser = ( { user, setUser } ) => {
     
     return(
         <form onSubmit={submitHandler}>
-            <input onChange={(e) => setUsername(e.target.value)} />
-            <input onChange={(e) => setPassword(e.target.value)} />
-            <button type="submit">Login</button>
+        { !user && <input onChange={(e) => setUsername(e.target.value)} /> }
+        { !user && <input onChange={(e) => setPassword(e.target.value)} /> }
+        { user && <p> Hello, {user.full_name} </p> }
+            <button type="submit">{ !user ? "Login" : "Logout" }</button>
         </form>
     )
 };

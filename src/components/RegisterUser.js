@@ -16,11 +16,11 @@ const RegisterUser = ( { user, setUser } ) => {
     return(
         <DivRegister>
             <form onSubmit={submitHandler}>
-                <input defaultValue={"Choose a username"} onChange={(e) => setUsername(e.target.value)} />
-                <input defaultValue={"Full Name?"} onChange={(e) => setFullName(e.target.value)} />
-                <input defaultValue={"Your email address"} onChange={(e) => setEmail(e.target.value)} />
-                <input defaultValue={"Choose a password"} onChange={(e) => setPassword(e.target.value)} />
-                <button type="submit">Create account</button>
+                {!user && <input defaultValue={"Choose a username"} onChange={(e) => setUsername(e.target.value)} />}
+                {!user && <input defaultValue={"Full Name?"} onChange={(e) => setFullName(e.target.value)} />}
+                {!user && <input defaultValue={"Your email address"} onChange={(e) => setEmail(e.target.value)} />}
+                {!user && <input defaultValue={"Choose a password"} onChange={(e) => setPassword(e.target.value)} />}
+                {!user && <button type="submit">Create account</button>}
             </form>
         </DivRegister>
     )

@@ -11,8 +11,9 @@ const DeleteUser = ( { user, password } ) => {
     
     return(
         <form onSubmit={submitHandler}>
-            <input onChange={(e) => setPassword(e.target.value)} />
-            <button type="submit">Delete Account</button>
+        { user && <div><p>This Action is irreversible! Delete Account?</p></div>}
+        { user && <input onChange={(e) => setPassword(e.target.value)} />}
+        { user && <button type="submit">Delete Account</button>}
         </form>
     )
 };
