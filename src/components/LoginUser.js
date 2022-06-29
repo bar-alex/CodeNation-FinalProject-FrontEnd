@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-export const LoginUser = ( { setIsLoggedIn, isLoggedIn } ) => {
+export const LoginUser = ( { user, setUser } ) => {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log(username, password, setIsLoggedIn, isLoggedIn);
+        console.log(username, password);
     };
     
     return(
