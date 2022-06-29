@@ -7,7 +7,7 @@ export const CreateUser = ( { setCreateUser, setIsLoggedIn, isLoggedIn} ) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log(username, email, password, setCreateUser, setIsLoggedIn);
+        console.log(username, email, password, setCreateUser, setIsLoggedIn, isLoggedIn);
     };
 
     return(
