@@ -8,7 +8,7 @@ import Routes from "./components/Routes";
 
 const App = () => {
   // user object: username, email, full_name
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
 
 
   return (
