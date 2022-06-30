@@ -7,6 +7,8 @@ import Achievements from "./components/Achievements";
 import Activities from "./components/Activities";
 import Challenges from "./components/Challenges";
 import Routes from "./components/Routes";
+import Navbar from "./components/Navbar/Navbar"
+
 
 const App = () => {
   // user object: username, email, full_name
@@ -23,7 +25,10 @@ const horizLabels=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Someday"];
 const vertLabel="M";
 const vertValues=[33, 53, 85, 41, 44, 65, 71];
 
+
+
   return (
+    
     <div className = "App">
       Fitness App
       <div>
@@ -31,6 +36,9 @@ const vertValues=[33, 53, 85, 41, 44, 65, 71];
         <Activities />
         <Challenges />
         <Routes />
+      </div>
+      <div>
+      <Navbar />
       </div>
       <Leaderboard></Leaderboard>
         <div style = { {width:"600px"} }>
@@ -41,6 +49,8 @@ const vertValues=[33, 53, 85, 41, 44, 65, 71];
         </div>
         {/* <VerticalBarChart /> */}
       </div>
+      
+
   );
 };
 
