@@ -1,19 +1,23 @@
 import { useState } from "react";
 
-const DeleteUser = ( { user, password } ) => {
+const DeleteUser = ( { user } ) => {
     const [password, setPassword] = useState();
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log("delete user - ", password);
-        console.log("ToDo: DeleteUser -> deleteUser( {user}, setUser, remove token )")
+        if (window.confirm('This action is irriversible. Delete your account?')) {
+            console.log("delete user - ", password);
+            console.log("ToDo: DeleteUser -> deleteUser( {user}, setUser, remove token )");
+        } else {
+            console.log("Not deleted");
+        }
     };
     
     return(
         <form onSubmit={submitHandler}>
-        { user && <div><p>This Action is irreversible! Delete Account?</p></div>}
-        { user && <input onChange={(e) => setPassword(e.target.value)} />}
-        { user && <button type="submit">Delete Account</button>}
+            <p>This action is permanent</p>
+            <input type="password" onChange={(e) => setPassword(e.target.value)} />
+            <button type="submit">Delete Account</button>
         </form>
     )
 };

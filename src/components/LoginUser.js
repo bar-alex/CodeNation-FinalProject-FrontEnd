@@ -5,9 +5,16 @@ const LoginUser = ( { user, setUser } ) => {
     const [password, setPassword] = useState();
 
     const submitHandler = (e) => {
-        e.preventDefault();
-        console.log("login user - ", username, password);
-        console.log("ToDo: LoginUser -> loginUser( {user}, setUser )")
+        if (!user) {
+            e.preventDefault();
+            console.log("login user - ", username, password);
+            console.log("ToDo: LoginUser -> loginUser( {user}, setUser )");
+        } else if (user) {
+            setUser({});
+            console.log("logout user - ", username);
+            console.log("ToDo: LogoutUser -> logoutUser( {user}, setUser({}) )");
+        }
+        
     };
     
     return(

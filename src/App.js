@@ -1,6 +1,7 @@
 // import { useState } from 'react';
 import './App.css'; // lets leave it here for now
 
+// components are as follows
 import Achievements from "./components/Achievements";
 import Activities from "./components/Activities";
 import Challenges from "./components/Challenges";
