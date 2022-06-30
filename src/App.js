@@ -24,17 +24,11 @@ const App = () => {
         <Challenges />
         <Routes />
       </div>
-      <div style={{ position: "relative", margin: "auto", width: "40vw" }}>
+      <div style={{ position: "relative", margin: "auto", width: "40vw" }} />
       <LineChart />
-      {/* <div style={{ position: "relative", margin: "auto", width: "40vw" }}> */}
-      {/* <h2>L<VerticalBarChart /></h2> */}
-
-      {/* <LineChart horizontalLabels={horizontalLabels} verticalLabel={verticalLabel} verticalValues={verticalValues}/> */}
+      <div style={{ position: "relative", margin: "auto", width: "40vw" }} />
+      <VerticalBarChart />
       </div>
-      {/* <VerticalBarChart /> */}
-      {/* <div style={{ position: "relative", margin: "auto", width: "40vw" }}>
-      <LineChart /> */}
-    </div>
   );
 };
 
