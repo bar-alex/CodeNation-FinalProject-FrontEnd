@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const UpdateUser = ( { user, setUser } ) => {
+    const [userImg, setUserImg] = useState();
     const [username, setUsername] = useState();
     const [fullName, setFullName] = useState();
     const [email, setEmail] = useState();
@@ -8,19 +9,25 @@ const UpdateUser = ( { user, setUser } ) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log("update user - ", username, fullName, email, password);
-        console.log("ToDo: UpdateUser -> updateUser( {user}, setUser )")
+        setUserImg();
+        console.log("update user - ", userImg, username, fullName, email, password);
+  
     }
 
     return(
         <div>
             <form onSubmit={submitHandler}>
-            <p>Update Account?</p> 
-            <input onChange={(e) => setUsername(e.target.value)} />
-            <input onChange={(e) => setFullName(e.target.value)} />
-            <input onChange={(e) => setEmail(e.target.value)} />
-            <input onChange={(e) => setPassword(e.target.value)} />
-            <button type="submit">Update Account</button>
+                <h1>Update Account?</h1>
+
+                <input type="file" onChange={(e) => setUserImg(e.target.value)} />
+                <img src={userImg} alt="Profile" />
+                
+
+                <input defaultValue={"change username"} onChange={(e) => setUsername(e.target.value)} />
+                <input defaultValue={"change full name"} onChange={(e) => setFullName(e.target.value)} />
+                <input defaultValue={"change email"} onChange={(e) => setEmail(e.target.value)} />
+                <input type="password" onChange={(e) => setPassword(e.target.value)} />
+                <button type="submit">Update Account</button>
             </form>
         </div>
     )
