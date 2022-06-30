@@ -1,6 +1,6 @@
 //import React, { useState, useEffect } from 'react';
 import './App.css';
-// import Leaderboard from './components/Leaderboard';
+import Leaderboard from './components/Leaderboard';
 import LineChart from "./components/LineChart";
 // import VerticalBarChart from "./components/VerticalBarChart";
 import Achievements from "./components/Achievements";
@@ -30,7 +30,7 @@ const vertValues=[33, 53, 85, 41, 44, 65, 71];
         <Challenges />
         <Routes />
       </div>
-      <Board></Board>
+      <Leaderboard></Leaderboard>
         <div style = { {width:"600px"} }>
           <LineChart 
           horizLabels={horizLabels}  
