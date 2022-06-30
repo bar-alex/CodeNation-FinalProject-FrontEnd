@@ -8,6 +8,8 @@ import Challenges from "./components/Challenges";
 import Routes from "./components/Routes";
 
 const App = () => {
+  // user object: username, email, full_name
+  // const [user, setUser] = useState({});
 
   // chartTitle,         // string or empty -- the title of the chart
   // const horizontalLabels = ['x', 'y', 'z', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
