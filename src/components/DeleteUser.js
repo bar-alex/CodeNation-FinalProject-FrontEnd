@@ -15,7 +15,7 @@ const DeleteUser = ( { user } ) => {
     
     return(
         <form onSubmit={submitHandler}>
-            <p>This action is permanent</p>
+            <p>This action is permanent. To confirm, please input your password.</p>
             <input type="password" onChange={(e) => setPassword(e.target.value)} />
             <button type="submit">Delete Account</button>
         </form>
