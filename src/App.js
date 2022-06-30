@@ -1,7 +1,7 @@
 //import React, { useState, useEffect } from 'react';
 import './App.css';
-import LineChart from "./components/LineChart";
-import VerticalBarChart from "./components/VerticalBarChart";
+// import LineChart from "./components/LineChart";
+// import VerticalBarChart from "./components/VerticalBarChart";
 import Achievements from "./components/Achievements";
 import Activities from "./components/Activities";
 import Challenges from "./components/Challenges";
@@ -25,9 +25,9 @@ const App = () => {
         <Routes />
       </div>
         <div/>
-        <LineChart />
+        {/* <LineChart /> */}
         <div/>
-        <VerticalBarChart />
+        {/* <VerticalBarChart /> */}
       </div>
   );
 };
