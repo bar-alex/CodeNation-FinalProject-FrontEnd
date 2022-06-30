@@ -20,7 +20,7 @@ const UpdateUser = ( { user, setUser } ) => {
             <input onChange={(e) => setFullName(e.target.value)} />
             <input onChange={(e) => setEmail(e.target.value)} />
             <input onChange={(e) => setPassword(e.target.value)} />
-            { user && <button type="submit">Update Account</button>}
+            <button type="submit">Update Account</button>
             </form>
         </div>
     )
