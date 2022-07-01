@@ -1,4 +1,4 @@
-import ManchesterMap from '../utils/maps'
+import RouteMap from './RouteMap'
 
 function Routes() {
     return (
@@ -8,4 +8,4 @@ function Routes() {
     );
   }
   
-  export default Routes;
+  export default RouteMap;

@@ -13,7 +13,7 @@ const center = {
     lng: -2.244644
 };
 
-function ManchesterMap() {
+function RouteMap() {
     return (
         <div className="mapWrapper">
       <LoadScript
@@ -34,4 +34,4 @@ function ManchesterMap() {
     )
   }
   
-  export default React.memo(ManchesterMap)
+  export default React.memo(RouteMap)
