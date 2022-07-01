@@ -1,11 +1,27 @@
 //import React, { useState, useEffect } from 'react';
 import './App.css';
+import styled from 'styled-components';
+import Leaderboard from "./components/Leaderboard/Leaderboard";
+import data from "./components/Leaderboard/LeaderboardData";
 // import LineChart from "./components/LineChart";
 // // import VerticalBarChart from "./components/VerticalBarChart";
 // import Achievements from "./components/Achievements";
 // import Activities from "./components/Activities";
 // import Challenges from "./components/Challenges";
 // import Routes from "./components/Routes";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+`;
+
+const onRowClicked = (item, index) => {
+  console.log(item, index);
+}
+
 
 const App = () => {
 
@@ -29,6 +45,9 @@ const App = () => {
         <Challenges />
         <Routes /> */}
       </div>
+        <Container>
+            <Leaderboard items={data} onClick={onRowClicked} />
+        </Container>
         {/* <div style = { {width:"600px"} }>
           <LineChart 
           horizLabels={horizLabels}  
