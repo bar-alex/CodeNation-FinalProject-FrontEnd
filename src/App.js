@@ -3,12 +3,13 @@ import './App.css';
 import styled from 'styled-components';
 import Leaderboard from "./components/Leaderboard/Leaderboard";
 import data from "./components/Leaderboard/LeaderboardData";
-// import LineChart from "./components/LineChart";
+import LineChart from "./components/LineChart";
 // // import VerticalBarChart from "./components/VerticalBarChart";
-// import Achievements from "./components/Achievements";
-// import Activities from "./components/Activities";
-// import Challenges from "./components/Challenges";
-// import Routes from "./components/Routes";
+import Achievements from "./components/Achievements";
+import Activities from "./components/Activities";
+import Challenges from "./components/Challenges";
+import Routes from "./components/Routes";
+import Navbar from "./components/Navbar/Navbar"
 
 const Container = styled.div`
   display: flex;
@@ -24,6 +25,8 @@ const onRowClicked = (item, index) => {
 
 
 const App = () => {
+  // user object: username, email, full_name
+  // const [user, setUser] = useState({});
 
   // chartTitle,         // string or empty -- the title of the chart
   // const horizontalLabels = ['x', 'y', 'z', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -32,30 +35,38 @@ const App = () => {
   // const verticalValues = [];
 
 // this is to test the linechart
-// const horizLabels=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Someday"];
-// const vertLabel="M";
-// const vertValues=[33, 53, 85, 41, 44, 65, 71];
+const horizLabels=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Someday"];
+const vertLabel="M";
+const vertValues=[33, 53, 85, 41, 44, 65, 71];
+
+
 
   return (
+    
     <div className = "App">
-      Fitness App
       <div>
-        {/* <Achievements />
-        <Activities />
-        <Challenges />
-        <Routes /> */}
+        <Navbar />
       </div>
-        <Container>
-            <Leaderboard items={data} onClick={onRowClicked} />
-        </Container>
-        {/* <div style = { {width:"600px"} }>
+        <h1>Fitness App</h1>
+          <Container>
+              <Leaderboard items={data} onClick={onRowClicked} />
+          </Container>
+        <div style = { {width:"600px"} }>
           <LineChart 
           horizLabels={horizLabels}  
           vertLabel={vertLabel} 
           vertValues={vertValues} />
-        </div> */}
+        </div>
+        <div>
+          <Achievements />
+          <Activities />
+          <Challenges />
+          <Routes />
+        </div>
         {/* <VerticalBarChart /> */}
       </div>
+      
+
   );
 };
 
