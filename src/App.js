@@ -1,13 +1,27 @@
 //import React, { useState, useEffect } from 'react';
 import './App.css';
-import Leaderboard from './components/Leaderboard';
+import styled from 'styled-components';
+import Leaderboard from "./components/Leaderboard/Leaderboard";
+import data from "./components/Leaderboard/LeaderboardData";
 import LineChart from "./components/LineChart";
-// import VerticalBarChart from "./components/VerticalBarChart";
+// // import VerticalBarChart from "./components/VerticalBarChart";
 import Achievements from "./components/Achievements";
 import Activities from "./components/Activities";
 import Challenges from "./components/Challenges";
 import Routes from "./components/Routes";
 import Navbar from "./components/Navbar/Navbar"
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+`;
+
+const onRowClicked = (item, index) => {
+  console.log(item, index);
+}
 
 
 const App = () => {
@@ -34,7 +48,9 @@ const vertValues=[33, 53, 85, 41, 44, 65, 71];
         <Navbar />
       </div>
         <h1>Fitness App</h1>
-        <Leaderboard></Leaderboard>
+          <Container>
+              <Leaderboard items={data} onClick={onRowClicked} />
+          </Container>
         <div style = { {width:"600px"} }>
           <LineChart 
           horizLabels={horizLabels}  
