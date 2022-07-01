@@ -30,22 +30,22 @@ const vertValues=[33, 53, 85, 41, 44, 65, 71];
   return (
     
     <div className = "App">
-      Fitness App
       <div>
-        <Achievements />
-        <Activities />
-        <Challenges />
-        <Routes />
+        <Navbar />
       </div>
-      <div>
-      <Navbar />
-      </div>
-      <Leaderboard></Leaderboard>
+        <h1>Fitness App</h1>
+        <Leaderboard></Leaderboard>
         <div style = { {width:"600px"} }>
           <LineChart 
           horizLabels={horizLabels}  
           vertLabel={vertLabel} 
           vertValues={vertValues} />
+        </div>
+        <div>
+          <Achievements />
+          <Activities />
+          <Challenges />
+          <Routes />
         </div>
         {/* <VerticalBarChart /> */}
       </div>

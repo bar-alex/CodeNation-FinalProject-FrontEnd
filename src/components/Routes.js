@@ -3,9 +3,9 @@ import RouteMap from './RouteMap'
 function Routes() {
     return (
       <div>
-        <ManchesterMap />
+        <RouteMap />
       </div>
     );
   }
   
-  export default RouteMap;
+  export default Routes;
