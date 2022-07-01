@@ -17,7 +17,7 @@ function RouteMap() {
     return (
         <div className="mapWrapper">
       <LoadScript
-        googleMapsApiKey="AIzaSyDsB_AaqEZtDK2ZD_c4DJL0I_4WEkeMfog"
+        googleMapsApiKey={process.env.REACT_APP_FRONTEND_GOOGLE_API_KEY}
       >
         <GoogleMap
           mapContainerStyle={containerStyle}
