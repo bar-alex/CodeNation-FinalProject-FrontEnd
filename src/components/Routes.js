@@ -1,7 +1,9 @@
-function Routes(properties) {
+import ManchesterMap from '../utils/maps'
+
+function Routes() {
     return (
       <div>
-        Activity Routes mate
+        <ManchesterMap />
       </div>
     );
   }
