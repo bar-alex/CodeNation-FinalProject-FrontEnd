@@ -1,7 +1,9 @@
-function Routes(properties) {
+import RouteMap from './RouteMap'
+
+function Routes() {
     return (
       <div>
-        Activity Routes mate
+        <RouteMap />
       </div>
     );
   }
