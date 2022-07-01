@@ -1,12 +1,11 @@
 //import React, { useState, useEffect } from 'react';
 import './App.css';
-import Leaderboard from './components/Leaderboard';
-import LineChart from "./components/LineChart";
-// import VerticalBarChart from "./components/VerticalBarChart";
-import Achievements from "./components/Achievements";
-import Activities from "./components/Activities";
-import Challenges from "./components/Challenges";
-import Routes from "./components/Routes";
+// import LineChart from "./components/LineChart";
+// // import VerticalBarChart from "./components/VerticalBarChart";
+// import Achievements from "./components/Achievements";
+// import Activities from "./components/Activities";
+// import Challenges from "./components/Challenges";
+// import Routes from "./components/Routes";
 
 const App = () => {
 
@@ -17,26 +16,25 @@ const App = () => {
   // const verticalValues = [];
 
 // this is to test the linechart
-const horizLabels=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Someday"];
-const vertLabel="M";
-const vertValues=[33, 53, 85, 41, 44, 65, 71];
+// const horizLabels=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Someday"];
+// const vertLabel="M";
+// const vertValues=[33, 53, 85, 41, 44, 65, 71];
 
   return (
     <div className = "App">
       Fitness App
       <div>
-        <Achievements />
+        {/* <Achievements />
         <Activities />
         <Challenges />
-        <Routes />
+        <Routes /> */}
       </div>
-      <Leaderboard></Leaderboard>
-        <div style = { {width:"600px"} }>
+        {/* <div style = { {width:"600px"} }>
           <LineChart 
           horizLabels={horizLabels}  
           vertLabel={vertLabel} 
           vertValues={vertValues} />
-        </div>
+        </div> */}
         {/* <VerticalBarChart /> */}
       </div>
   );
