@@ -6,7 +6,7 @@ import LineChart from "./components/LineChart";
 import Achievements from "./components/Achievements";
 import Activities from "./components/Activities";
 import Challenges from "./components/Challenges";
-import Routes from "./components/Routes";
+import RoutePage from "./components/RoutePage";
 import Navbar from "./components/Navbar/Navbar"
 
 
@@ -45,7 +45,7 @@ const vertValues=[33, 53, 85, 41, 44, 65, 71];
           <Achievements />
           <Activities />
           <Challenges />
-          <Routes />
+          <RoutePage />
         </div>
         {/* <VerticalBarChart /> */}
       </div>
