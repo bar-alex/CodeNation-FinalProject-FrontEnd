@@ -11,13 +11,23 @@ import Challenges from "./components/Challenges";
 import Routes from "./components/Routes";
 import Navbar from "./components/Navbar/Navbar"
 
-const Container = styled.div`
+const CentralHighest = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  border: 2px red solid;
+  justify-content: space-between;
+`
+
+const Boardtainer = styled.div`
   min-height: 100vh;
-  padding: 20px;
-`;
+  max-width: 800px;
+  border: 2px red solid;
+`
+
+const Graphtainer = styled.div`
+  min-height: 100vh;
+  max-width: 800px;
+  border: 2px red solid;
+`
 
 const onRowClicked = (item, index) => {
   console.log(item, index);
@@ -48,14 +58,26 @@ const vertValues=[33, 53, 85, 41, 44, 65, 71];
         <Navbar />
       </div>
         <h1>Fitness App</h1>
-          <Container>
+          <CentralHighest>
+
+            <Graphtainer>
+
+              <h1>Your forformance</h1>
+            <LineChart 
+              horizLabels={horizLabels}  
+              vertLabel={vertLabel} 
+              vertValues={vertValues} />
+            </Graphtainer>
+
+            <Boardtainer>
+
+              <h1>Who's winning</h1>
               <Leaderboard items={data} onClick={onRowClicked} />
-          </Container>
+            </Boardtainer>
+
+          </CentralHighest>
         <div style = { {width:"600px"} }>
-          <LineChart 
-          horizLabels={horizLabels}  
-          vertLabel={vertLabel} 
-          vertValues={vertValues} />
+
         </div>
         <div>
           <Achievements />
