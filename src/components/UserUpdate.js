@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const UpdateUser = ( { user, setUser } ) => {
+const UserUpdate = ( { user, setUser } ) => {
     const [username, setUsername] = useState();
     const [fullName, setFullName] = useState();
     const [email, setEmail] = useState();
@@ -26,4 +26,4 @@ const UpdateUser = ( { user, setUser } ) => {
     )
 }
 
-export default UpdateUser;
+export default UserUpdate;
