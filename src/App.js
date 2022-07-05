@@ -5,14 +5,35 @@ import Leaderboard from "./components/Leaderboard/Leaderboard";
 import data from "./components/Leaderboard/LeaderboardData";
 import LineChart from "./components/LineChart";
 // import VerticalBarChart from "./components/VerticalBarChart";
-import Achievements from "./components/Achievements";
 import Activities from "./components/Activities";
 import Routes from "./components/Routes";
 import Navbar from "./components/Navbar/Navbar";
+import BackgroundImage from "./components/img/landingPage3.jpg"
+
+const Title = styled.div`
+  font-size: calc(15px + 3vh);
+  color: white;
+  padding: 10vh;
+  `
+const Spacer = styled.div`
+padding-bottom: 50%;
+`
+
+const Background = styled.div`
+  z-index: bottom;
+  border: 1px solid black;
+  background: url(${BackgroundImage});
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  `
 
 const TopDiv = styled.div`
+  /* color: white; */
   display: flex;
   justify-content: space-between;
+  align-content: right;
   text-justify: center;
   height: 100%;
   border: 2px red solid;
@@ -20,38 +41,27 @@ const TopDiv = styled.div`
 
 const RightContainer = styled.div`
   display: flex;
-  flex-direction: column-reverse;
-  justify-content: left;
-  height: 100vh;
+  flex-flow: wrap;
+  position: fixed right;
   font-size: calc(12px + 1vh);
-  min-height: 100vh;
-  width: 30%;
   border: 2px red solid;
 `
+const LeaderBoardBox = styled.div`
+ border: 10px red dashed;
+ `
 
 const CenterContainer = styled.div`
   display: flex;
   flex: row;
-  width: 100%;
   font-size: calc(12px + 1vh);
-  max-width: 75%;
-  height: 70vh;
-  min-height: 600px;
-  min-width: 80%;
-  margin: 5vh;
+  min-height: 100vh;
   border: 2px red solid;
 `
 
 const CenterLow = styled.div`
   display: flex;
   flex: row;
-  /*
-  width: 100%;
   font-size: calc(12px + 1vh);
-  max-width: 75%;
-  height: 70vh;
-  min-height: 600px;
-  min-width: 80%; */
   border: 2px red solid;
 `
 
@@ -59,16 +69,15 @@ const CenterLow = styled.div`
 const Charttainer = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
   flex-flow: column;
   font-size: calc(12px + 1vh);
   /* margin: 5%; */
-  min-height: 500px;
-  min-width: 500px;
-  
   border: 2px red solid;
   `
 const ChartFrame = styled.div`
   border: 10px red dashed;
+  min-width: 50%;
   `
 const InnerBottomCharttainer = styled.div`
   display: flex;
@@ -82,8 +91,6 @@ const Maptainer = styled.div`
   flex-flow: column;
   font-size: calc(12px + 1vh);
   /* margin: 5%; */
-  min-height: 500px;
-  min-width: 500px;
   border: 2px red solid;
 `
 const MapFrame = styled.div`
@@ -122,7 +129,7 @@ const vertValues=[33, 53, 85, 41, 44, 65, 71];
 
 // *******************************************************
 // temp route values to be linked to the route data later
-// ******************************************************
+// *******************************************************
 const [route, setRoute] = useState();
 const [chart, setChart] = useState();
 
@@ -140,98 +147,111 @@ const routeSetter = (value) => {
   return (
     
     <div className = "App">
+      
       <div>
         <Navbar />
       </div>
-        <h1>Fitness App</h1>
-              <TopDiv>
+        
+        <Background>
+        <Title>
+          <h1>Fitness App</h1>
+        </Title>
+        <Spacer />
+        </Background>
+        <TopDiv>
+        
+          <CenterContainer>
+
+            <Charttainer>
+            <h1>Trends</h1>
+              <ChartFrame>
+                <div style={{width: "100%" }}>
+                <LineChart
+                  horizLabels={horizLabels}  
+                  vertLabel={vertLabel} 
+                  vertValues={vertValues} />
+                </div>
+              </ChartFrame>
               
-                <CenterContainer>
 
-                  <Charttainer>
-                  <h1>Your Performance</h1>
-                    <ChartFrame>
-                      <div style={{width: "100%"}}>
-                      <LineChart
-                        horizLabels={horizLabels}  
-                        vertLabel={vertLabel} 
-                        vertValues={vertValues} />
-                      </div>
-                    </ChartFrame>
-                    
+              <InnerBottomCharttainer>
+                <div>
+                  <p>
+                    Information about your performance chart.
+                  </p>
+                </div>
 
-                    <InnerBottomCharttainer>
-                      <div>
-                        <p>
-                          Information about your performance chart.
-                        </p>
-                      </div>
+                <div>
+                  <div>
+                    <label for="chart">Select something to display in the chart</label>
+                      <select name="chart" id="chart">
+                        <option value={1} onChange={(e) => chartSetter(e.target.value)}>chart 1 placeholder</option>
+                        <option value={2} onChange={(e) => chartSetter(e.target.value)}>chart 2 placeholder</option>
+                        <option value={3} onChange={(e) => chartSetter(e.target.value)}>chart 3 placeholder</option>
+                        <option value={4} onChange={(e) => chartSetter(e.target.value)}>chart 4 placeholder</option>
+                        <option value={5} onChange={(e) => chartSetter(e.target.value)}>chart 5 placeholder</option>                         
+                      </select>
+                  </div>
+                </div>
 
-                      <div>
-                        <div>
-                          <label for="chart">Select something to display in the chart</label>
-                            <select name="chart" id="chart">
-                              <option value={1} onChange={(e) => chartSetter(e.target.value)}>chart 1 placeholder</option>
-                              <option value={2} onChange={(e) => chartSetter(e.target.value)}>chart 2 placeholder</option>
-                              <option value={3} onChange={(e) => chartSetter(e.target.value)}>chart 3 placeholder</option>
-                              <option value={4} onChange={(e) => chartSetter(e.target.value)}>chart 4 placeholder</option>
-                              <option value={5} onChange={(e) => chartSetter(e.target.value)}>chart 5 placeholder</option>                         
-                            </select>
-                        </div>
-                      </div>
+              </InnerBottomCharttainer>
 
-                    </InnerBottomCharttainer>
+              <h1>Maybe Some Activities go here somewhere</h1>
+              <Activities />
 
-                  </Charttainer>
+            </Charttainer>
 
-                  <Maptainer>
-                    <h1>Where the action is</h1>
-                    <InnerMaptainer>
-                      <MapFrame>
-                        <Routes />
-                      </MapFrame>
-                      <div>
-                        <p>
-                          Here we will put some kind of route information that is useful to the person.
-                          <li>item 1</li>
-                          <li>item 2</li>
-                          <li>item 3</li>
-                          <li>item 4</li>
-                        </p>
-                      </div>
-                    </InnerMaptainer>
-                    <InnerBottomMaptainer>
-                      <div>
-                        <label for="routes">Find an activity/route:</label>
-                          <select name="routes" id="routes">
-                            <option value={1} onChange={(e) => routeSetter(e.target.value)}>Route 1 placeholder</option>
-                            <option value={2} onChange={(e) => routeSetter(e.target.value)}>Route 2 placeholder</option>
-                            <option value={3} onChange={(e) => routeSetter(e.target.value)}>Route 3 placeholder</option>
-                            <option value={4} onChange={(e) => routeSetter(e.target.value)}>Route 4 placeholder</option>
-                            <option value={5} onChange={(e) => routeSetter(e.target.value)}>Route 5 placeholder</option>                         
-                          </select>
-                      </div>
-                      <div>
-                        <p>
-                          Here could be some sort of route picker or whatever.
-                        </p>
-                      </div>
-                    </InnerBottomMaptainer>
-                  </Maptainer>
-                </CenterContainer>
+            <Maptainer>
+              <h1>Where the action is</h1>
+              <InnerMaptainer>
+                <MapFrame>
+                  <Routes />
+                </MapFrame>
+                <div>
+                  <p>
+                    Here we will put some kind of route information that is useful to the person.
+                    <li>item 1</li>
+                    <li>item 2</li>
+                    <li>item 3</li>
+                    <li>item 4</li>
+                  </p>
+                </div>
+              </InnerMaptainer>
+              <InnerBottomMaptainer>
+                <div>
+                  <label htmlFor="routes">Find an activity/route:</label>
+                    <select name="routes" id="routes">
+                      <option value={1} onChange={(e) => routeSetter(e.target.value)}>Route 1 placeholder</option>
+                      <option value={2} onChange={(e) => routeSetter(e.target.value)}>Route 2 placeholder</option>
+                      <option value={3} onChange={(e) => routeSetter(e.target.value)}>Route 3 placeholder</option>
+                      <option value={4} onChange={(e) => routeSetter(e.target.value)}>Route 4 placeholder</option>
+                      <option value={5} onChange={(e) => routeSetter(e.target.value)}>Route 5 placeholder</option>                         
+                    </select>
+                </div>
+                <div>
+                  <p>
+                    Here could be some sort of route picker or whatever.
+                  </p>
+                </div>
+              </InnerBottomMaptainer>
+            </Maptainer>
+          </CenterContainer>
 
-                <CenterLow>
+          <CenterLow>
+            
+          </CenterLow>
 
-                </CenterLow>
+        <RightContainer>
+          <h1>Who's winning</h1>
+          <LeaderBoardBox>
+            <Leaderboard items={data} onClick={onRowClicked} />
+          </LeaderBoardBox>
+          
+        </RightContainer>
 
-              <RightContainer>
-                <h1>Who's winning</h1>
-                <Leaderboard items={data} onClick={onRowClicked} />
-                  <h1>Achievements</h1>
-                <Achievements />
-              </RightContainer>
-
-              </TopDiv>
+        </TopDiv>
+      
+            
 
   
         <>
@@ -239,7 +259,7 @@ const routeSetter = (value) => {
 
         <div>
 
-          <Activities />
+          
         </div>
         {/* <VerticalBarChart /> */}
       </div>
