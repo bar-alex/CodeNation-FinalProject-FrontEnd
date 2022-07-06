@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const DeleteUser = ( { user } ) => {
+const UserDelete = ( { user } ) => {
     const [password, setPassword] = useState();
 
     const submitHandler = (e) => {
@@ -22,4 +22,4 @@ const DeleteUser = ( { user } ) => {
     )
 };
 
-export default DeleteUser;
+export default UserDelete;
