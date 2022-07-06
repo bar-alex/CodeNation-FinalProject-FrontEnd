@@ -91,19 +91,22 @@ const UserRegister = ( { user, setUser } ) => {
     const [email, setEmail]         = useState();
     const [fullName, setFullName]   = useState();
 
-    const [password, setPassword]   = useState();
+    const [password, setPassword]           = useState();
+    // to confirm the password is typed correctly
     const [confirmedPass, setConfirmedPass] = useState();
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        console.log("register user - ", username, fullName, email, password, confirmedPass);
-        console.log("ToDo: RegisterUser -> createUser( {user}, setUser )")
+
+        console.log("-> UserRegister -> createUser( {user}, setUser )")
+        // console.log("-> UserRegister -> {", username, fullName, email, password, confirmedPass,"}")
 
         if (!!username && !!email && !!fullName && !!password && (password===confirmedPass) ){
+
             // call createUser to save the data
+            await createUser( {username, password, email, full_name:fullName }, setUser );
 
-            createUser( {username, password, email, full_name:fullName }, setUser );
-
+            // hides the modal form
             setShow(false);
         }
     };
@@ -130,7 +133,7 @@ const UserRegister = ( { user, setUser } ) => {
                 aria-labelledby="modal-label"
             >
                 <div>
-                    <h4 id="modal-label">Please enter your information to register:</h4>
+                    <h4 id="modal-label">Please enter your information to register an account:</h4>
                     <br/>
                     <form onSubmit={submitHandler}>
                         {/* <label for="username">Username</label> */}
