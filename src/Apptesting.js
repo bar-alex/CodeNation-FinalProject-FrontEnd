@@ -1,12 +1,11 @@
-import Navbar from "../components/Navbar/Navbar"
+import Navbar from "./components/Navbar/Navbar"
 import styled from 'styled-components';
-import Leaderboard from "../components/Leaderboard/Leaderboard";
-import data from "../components/Leaderboard/LeaderboardData";
-import LineChart from "../components/LineChart";
-import Achievements from "../components/Achievements";
-import Activities from "../components/Activities";
-import Challenges from "../components/Challenges";
-import Routes from "../components/Routes";
+import Leaderboard from "./components/Leaderboard/Leaderboard";
+import data from "./components/Leaderboard/LeaderboardData";
+import LineChart from "./components/LineChart";
+import Achievements from "./components/Achievements";
+import Activities from "./components/Activities";
+import Routes from "./components/Routes";
 
 const Boardtainer = styled.div`
   flex-direction: column;
@@ -57,7 +56,6 @@ const onRowClicked = (item, index) => {
           <div>
             <Achievements />
             <Activities />
-            <Challenges />
             <Routes />
           </div>
           {/* <VerticalBarChart /> */}

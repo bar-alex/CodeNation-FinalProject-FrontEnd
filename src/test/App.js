@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
 import styled from 'styled-components';
-import Leaderboard from "./components/Leaderboard/Leaderboard";
-import data from "./components/Leaderboard/LeaderboardData";
-import LineChart from "./components/LineChart";
+import Leaderboard from "../components/Leaderboard/Leaderboard";
+import data from "../components/Leaderboard/LeaderboardData";
+import LineChart from "../components/LineChart";
 // import VerticalBarChart from "./components/VerticalBarChart";
-import Activities from "./components/Activities";
-import Routes from "./components/Routes";
-import Navbar from "./components/Navbar/Navbar";
+import Activities from "../components/Activities";
+import Routes from "../components/Routes";
+import Navbar from "../components/Navbar/Navbar";
 import BackgroundImage from "./components/img/landingPage3.jpg"
 
 const Title = styled.div`
@@ -16,14 +16,14 @@ const Title = styled.div`
   padding: 10vh;
   `
 const Spacer = styled.div`
-padding-bottom: 50%;
+  padding-bottom: 50%;
 `
 
 const Background = styled.div`
   z-index: bottom;
-  border: 1px solid black;
   background: url(${BackgroundImage});
-  -webkit-background-size: cover;
+  height: 1400px;
+  -webkit-background-height: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
@@ -36,7 +36,7 @@ const TopDiv = styled.div`
   align-content: right;
   text-justify: center;
   height: 100%;
-  border: 2px red solid;
+  /* border: 2px red solid; */
 `
 
 const RightContainer = styled.div`
@@ -44,7 +44,7 @@ const RightContainer = styled.div`
   flex-flow: wrap;
   position: fixed right;
   font-size: calc(12px + 1vh);
-  border: 2px red solid;
+  /* border: 2px red solid; */
 `
 const LeaderBoardBox = styled.div`
  border: 10px red dashed;
@@ -55,14 +55,14 @@ const CenterContainer = styled.div`
   flex: row;
   font-size: calc(12px + 1vh);
   min-height: 100vh;
-  border: 2px red solid;
+  /* border: 2px red solid; */
 `
 
 const CenterLow = styled.div`
   display: flex;
   flex: row;
   font-size: calc(12px + 1vh);
-  border: 2px red solid;
+  /* border: 2px red solid; */
 `
 
 
@@ -73,7 +73,7 @@ const Charttainer = styled.div`
   flex-flow: column;
   font-size: calc(12px + 1vh);
   /* margin: 5%; */
-  border: 2px red solid;
+  /* border: 2px red solid; */
   `
 const ChartFrame = styled.div`
   border: 10px red dashed;
@@ -82,7 +82,7 @@ const ChartFrame = styled.div`
 const InnerBottomCharttainer = styled.div`
   display: flex;
   flex-direction: row;
-  border: 2px red solid;
+  /* border: 2px red solid; */
   `
 
 const Maptainer = styled.div`
@@ -91,7 +91,7 @@ const Maptainer = styled.div`
   flex-flow: column;
   font-size: calc(12px + 1vh);
   /* margin: 5%; */
-  border: 2px red solid;
+  /* border: 2px red solid; */
 `
 const MapFrame = styled.div`
   border: 10px red dashed;
@@ -100,12 +100,12 @@ const InnerMaptainer = styled.div`
   display: flex;
   justify-content: space-around;
   line-height: 30px;
-  border: 2px red solid;
+  /* border: 2px red solid; */
   `
 const InnerBottomMaptainer = styled.div`
   display: flex;
   justify-content: space-around;
-  border: 2px red solid;
+  /* border: 2px red solid; */
   `
 
 const onRowClicked = (item, index) => {
