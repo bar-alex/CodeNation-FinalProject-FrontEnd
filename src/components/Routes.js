@@ -1,10 +1,17 @@
 import styled from "styled-components";
-import { useLoadScript, GoogleMap, Marker, DirectionsRenderer, Circle, MarkerClusterer } from "@react-google-maps/api";
+import { useLoadScript, GoogleMap, Marker } from "@react-google-maps/api";
 import { useMemo } from "react";
+
+const centerMarker = {
+  lat: 53.483959,
+  lng: -2.244644
+}
+fetch(`https://cn-fitness-m37.herokuapp.com/routes/all`)
+   .then((response) => console.log(response.json()))
 
 
 function Routes(properties) {
-  const center = useMemo(() => ({lat: 53.47, lng: -2.24}), [])
+  const center = useMemo(() => ({lat: 53.34, lng: -1.77}), [])
   const options = useMemo(() => ({
     disableDefaultUI: true,
     clickableIcons: false
@@ -21,12 +28,12 @@ function Routes(properties) {
             <h1>controls</h1>
           </div>
           <div className="map">
-            <GoogleMap zoom={13} center = { center } mapContainerClassName= "map-container" options={options}></GoogleMap>
+            <GoogleMap zoom={13} center = { center } mapContainerClassName= "map-container" options={options}>
+              <Marker position={centerMarker} />
+            </GoogleMap>
           </div>
         </div>
-      </DivStyled>
-    );
-  }
+      </DivStyled>)}
 
   const DivStyled = styled.div`
     .map{

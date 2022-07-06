@@ -16,15 +16,16 @@ html {
     padding: 0;
     margin: 0;
     box-sizing: inherit; /* all must inherit border-box */
+
 }
 /*-- resets ---------------------------------*/
 
-:root{
+/* :root{
     /* here we can define the color variables for our color palette */
   /*--color-button: green;
   --color-button-action: deepskyblue; */
     /* color: deepskyblue; */
-}
+
 
 
 
