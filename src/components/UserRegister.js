@@ -2,7 +2,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Modal from 'react-overlays/Modal';
-
+import { createUser } from "../util/utilUser";
 
 
 // the 'darkness' behind the dialog
@@ -30,6 +30,34 @@ const ModalDiv = styled(Modal)`
     background-color: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     padding: 20px;
+
+    > div {
+        /* border: 1px solid red; */
+        /* height: 300px; */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    > div > form {
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    input[type="text"], input[type="password"] {
+        height: 30px;
+    }
+
+    #pass-invalid-text { font-size:0.8rem; color:coral; }
+
+    /* the buttons of the form */
+    > div > form > div {
+        display: flex;
+        justify-content: space-between;
+    }
+
 `;
 
 
@@ -64,15 +92,17 @@ const UserRegister = ( { user, setUser } ) => {
     const [fullName, setFullName]   = useState();
 
     const [password, setPassword]   = useState();
-    const {passValid, setPassValid} = useState(false);      // will be true when the confirmation password dis the same as the password
+    const [confirmedPass, setConfirmedPass] = useState();
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log("register user - ", username, fullName, email, password, passValid);
+        console.log("register user - ", username, fullName, email, password, confirmedPass);
         console.log("ToDo: RegisterUser -> createUser( {user}, setUser )")
 
-        if (passValid && !!username && !!email && !!fullName && !!password){
+        if (!!username && !!email && !!fullName && !!password && (password===confirmedPass) ){
             // call createUser to save the data
+
+            createUser( {username, password, email, full_name:fullName }, setUser );
 
             setShow(false);
         }
@@ -101,18 +131,20 @@ const UserRegister = ( { user, setUser } ) => {
             >
                 <div>
                     <h4 id="modal-label">Please enter your information to register:</h4>
-                    
+                    <br/>
                     <form onSubmit={submitHandler}>
                         {/* <label for="username">Username</label> */}
                         <input id="your username" name="username" 
+                            type="text"
                             required
                             placeholder="Username" 
-                            onChange={(e) => setUsername(e.target.value)} 
+                            onChange={(e) => setUsername(e.target.value.trim())} 
                         />
-                        <br/>
+                        
 
                         {/* <label for="fullName">Full name</label> */}
                         <input id="fullName" name="fullName" 
+                            type="text"
                             required
                             placeholder="Full name"
                             onChange={(e) => setFullName(e.target.value)} 
@@ -120,18 +152,19 @@ const UserRegister = ( { user, setUser } ) => {
                         
                         {/* <label for="email">Email</label> */}
                         <input id="email" name="email" 
+                            type="text"
                             required
                             placeholder="Email"
                             onChange={(e) => setEmail(e.target.value)} 
                         />
-                        <br/>
+                        
                         
                         {/* <label for="password">Password</label> */}
                         <input id="password" name="password" 
                             type="password"
                             required
                             placeholder="Password" 
-                            onChange={(e) => setPassword(e.target.value)} 
+                            onChange={(e) => setPassword(e.target.value.trim())} 
                         />
 
                         {/* <label for="confirmPass">Re-type password</label> */}
@@ -139,15 +172,19 @@ const UserRegister = ( { user, setUser } ) => {
                             type="password"
                             required
                             placeholder="Re-type password" 
-                            onChange={(e) => setPassValid(e.target.value === password && !!password)} 
+                            onChange={(e) => setConfirmedPass( e.target.value.trim() )} 
                         />
-                        {!passValid && <p id="pass-invalid-text">Passwords don't match!</p> }
-                        <button type="submit">
-                            Create account
-                        </button>
-                        <button type="button" onClick={() => setShow(true)}>
-                            Cancel 
-                        </button>
+                        {<p id="pass-invalid-text">{ password!==confirmedPass ? "* passwords don't match!" : " " }</p> }
+
+                        <br/>
+                        <div>
+                            <button type="submit">
+                                Create account
+                            </button>
+                            <button type="button" onClick={() => setShow(false)}>
+                                Cancel 
+                            </button>
+                        </div>
                     </form>
 
                 </div>
