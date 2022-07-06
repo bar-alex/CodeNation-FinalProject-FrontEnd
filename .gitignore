@@ -27,3 +27,4 @@ yarn-error.log*
 debug.log
 /src/not_needed
 AmodalTest.js
+temp.js

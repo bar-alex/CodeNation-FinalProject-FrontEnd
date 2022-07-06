@@ -17,8 +17,10 @@ export const createUser = async (userObj, setUser) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify( userObj ),
         });
+
         const data = await res.json();
-        // console.log(data);
+        console.log('-> createUser(), data:', data);
+
         if (data.error) throw new Error(data.error)
 
         // save user token for autologin
@@ -58,8 +60,10 @@ export const loginUser = async (userObj, setUser) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify( userObj ),
         });
+
         const data = await res.json();
-        console.log('->data: ',data);
+        console.log('->loginUser(), data: ',data);
+
         if (data.error) throw new Error(data.error)
 
         // save user token for autologin
@@ -69,7 +73,7 @@ export const loginUser = async (userObj, setUser) => {
         setUser( data.user );
 
     } catch (error) {
-        console.log('-> createUser(), error: ',error);
+        console.log('-> loginUser(), error: ',error);
     }
 };
 
@@ -94,18 +98,17 @@ export const retrieveUser = async (setUser) => {
                 "authorization": getUserToken(),
             }
         });
-        const data = await res.json();
-        console.log('->data: ',data);
-        if (data.error) throw new Error(data.error)
 
-        // save user token for autologin
-        // saveUserToken(data.token)
+        const data = await res.json();
+        console.log('-> retrieveUser(), data: ',data);
+
+        if (data.error) throw new Error(data.error)
 
         // set the user to state
         setUser( data );
 
     } catch (error) {
-        console.log('-> createUser(), error: ',error);
+        console.log('-> retrieveUser(), error: ',error);
     }
 }
 
