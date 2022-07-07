@@ -1,10 +1,25 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
 import styled from 'styled-components';
 // import Leaderboard from "./components/Leaderboard/Leaderboard";
 // import data from "./components/Leaderboard/LeaderboardData";
-import Navbar from "./components/Navbar/Navbar";
-import BackgroundImage from "./components/img/landingPage3.jpg"
+import Navbar from "../Navbar/Navbar";
+import BackgroundImage from "./assets/landingPage/landingPage3.jpg"
+import LoginUser from '../LoginUser';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from "react-router-dom";
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);
+
+
 
 const Title = styled.div`
   font-size: calc(15px + 3vh);
@@ -28,11 +43,11 @@ const LoginBox = styled.div`
   height: 250px;
   background-color: rgba(0, 0, 0, 0.4);
   `
-const LoginBoxLabel = styled.div`
-  display: flex;
-  color: white;
-  margin: 22px;
-`
+// const LoginBoxLabel = styled.div`
+//   display: flex;
+//   color: white;
+//   margin: 22px;
+// `
 
 const Spacer = styled.div`
   padding-bottom: 25%;
@@ -72,6 +87,9 @@ const LandingPage = () => {
       <div>
         <Navbar />
       </div>
+
+    
+
         <Background>
         <Title>
           <h1>Strider</h1>
@@ -79,7 +97,7 @@ const LandingPage = () => {
         <CenterPage>
 
           <LoginBox>
-            <form>
+            {/* <form>
                 <LoginBoxLabel>
                   <label htmlFor='Username'>Username</label>
                 </LoginBoxLabel>
@@ -93,7 +111,10 @@ const LandingPage = () => {
                 
                   <input type='text' id='Password' name='Password'></input>
                
-            </form>
+            </form> */}
+
+            <LoginUser />
+
           </LoginBox>
 
         </CenterPage>  

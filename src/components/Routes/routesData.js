@@ -1,5 +1,5 @@
 
-const routesData = [
+const RoutesData = [
   { venue: "Bowlee Park", difficulty: "easy", distance: 1.5, time: 11, event: "running" },
   { venue: "Pintlliw", difficulty: "moderate", distance: 3.7, time: 28, event: "running" },
   { venue: "Woburn", difficulty: "easy", distance: 11.5, time: 45, event: "cycling" },
@@ -24,4 +24,4 @@ const routesData = [
 ]
 
 
-export default routesData;
+export default RoutesData;
