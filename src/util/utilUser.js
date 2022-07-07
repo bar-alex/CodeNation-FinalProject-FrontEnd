@@ -38,14 +38,57 @@ export const createUser = async (userObj, setUser) => {
 
 // updateUser( {userObj}, setUser, token ) => fetch(); use setUser( user ); 
 export const updateUser = async (userObj, setUser) => {
-    // PATCH /users/self {userObj, token, auth_password} => {userObj}
+    try {
+        // PATCH /users/self {userObj, token, auth_password} => {userObj}
+        const res = await fetch(`${process.env.REACT_APP_REST_API}/users/self`, {
+            method: "PATCH",
+            headers: { 
+                "Content-Type": "application/json",
+                "authorization": getUserToken(),
+            },
+            body: JSON.stringify( userObj ),
+        });
+
+        const data = await res.json();
+        console.log('-> updateUser(), data:', data);
+
+        if (data.error) throw new Error(data.error)
+
+        // set the user to state
+        setUser( data.user );
+
+    } catch (error) {
+        console.log('-> updateUser(), error: ',error);
+    }
 
 };
 
 
 // deleteUser( {userObj,password}, token ) => fetch(); setUser( {} ); remove token;
 export const deleteUser = async (userObj, setUser) => {
-    // DELETE /users/self {token, auth_password} => success/failure 
+    try {
+        // DELETE /users/self {token, auth_password} => success/failure 
+        const res = await fetch(`${process.env.REACT_APP_REST_API}/users/self`, {
+            method: "DELETE",
+            headers: { 
+                "Content-Type": "application/json",
+                "authorization": getUserToken(),
+            },
+            body: JSON.stringify( userObj ),
+        });
+
+        const data = await res.json();
+        console.log('-> deleteUser(), data:', data);
+
+        if (data.error) throw new Error(data.error)
+
+        // remove the user from state, remove the token
+        setUser( {} );
+        removeUserToken();
+
+    } catch (error) {
+        console.log('-> deleteUser(), error: ',error);
+    }
 
 };
 
