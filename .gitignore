@@ -23,3 +23,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+debug.log
+/src/not_needed
+AmodalTest.js
+temp.js
