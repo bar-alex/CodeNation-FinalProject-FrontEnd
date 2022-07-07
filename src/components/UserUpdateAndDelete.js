@@ -1,8 +1,22 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Modal from 'react-overlays/Modal';
 import { updateUser, deleteUser } from "../util/utilUser";
+
+
+//---
+import { retrieveAllRoutes, retrieveNamedRoute } from "../util/utilRoutes";
+
+const xx = async () => {
+    const strToMap = (yy) => console.log('-> yy: ', console.log(yy, JSON.parse(yy) ) );
+
+    const result = await retrieveAllRoutes( ()=>{} ); 
+
+    const result2 = await retrieveNamedRoute('river_dash', strToMap); 
+};
+xx();
+//---
 
 
 // the 'darkness' behind the dialog
@@ -86,24 +100,47 @@ const UserUpdateAndDelete = ( { user, setUser } ) => {
 
     const renderBackdrop = (props) => <Backdrop {...props} />;
 
+
     const [authPassword, setAuthPassword]   = useState();
     
-    const [username, setUsername]   = useState(user?.username);
-    const [email, setEmail]         = useState(user?.email);
-    const [fullName, setFullName]   = useState(user?.full_name);
+    const [username, setUsername]   = useState( user?.username );
+    const [email, setEmail]         = useState( user?.email );
+    const [fullName, setFullName]   = useState( user?.full_name );
 
     const [password, setPassword]           = useState();
     // to confirm the password is typed correctly
     const [confirmedPass, setConfirmedPass] = useState();
 
+    // toggled when a submit attept was done after being shown
+    const [attempted, setAttempted] = useState(false)
+
+    // for the show toggle, either of show or hidden, just reset attempted
+    useEffect( () => setAttempted(false),[show] )
+
+
+    // i push the values from the props into the local state
+    // useEffect( ()=>{
+    //     setUsername(user?.username);
+    //     setEmail(user?.email);
+    //     setFullName(user?.full_name);
+    // },[show,user?.username,user?.email,user?.full_name] )
+
+
+    console.log('-> UserUpdateAndDelete() ', user, username, email, fullName );
 
     const submitHandler = async (e) => {
         e.preventDefault();
 
+        // attempt was made, toggle this
+        setAttempted(true)
+
         console.log("updating user - ", username, fullName, email, password);
-        console.log("ToDo: UserUpdateAndDelete -> updateUser( {user}, setUser )")
 
         // check the password entered is correct before proceeding with the deletion
+
+        console.log('-> UserUpdateAndDelete.submitHandler():',
+            'authPassword:',authPassword, 'email:', email, 'fullName:', fullName,
+            'password:',password, 'confirmedPass:',confirmedPass)
 
         // theck the data is enetered - a simple validation
         if ( !!authPassword && 
@@ -115,21 +152,26 @@ const UserUpdateAndDelete = ( { user, setUser } ) => {
             if (fullName!==user.full_name)                  userObj.full_name = fullName;
             if (email!==user.email)                         userObj.email = email;
 
+            console.log('-> UserUpdateAndDelete.submitHandler(): userObj: ', userObj)
+
             // testing to make sure i got more fields than the auth_password, otherwise is pointless
-            if ( Object.keys(userObj).length > 1 )
-                await updateUser( userObj, setUser );
+            if ( Object.keys(userObj).length > 1 ) {
+                const result = await updateUser( userObj, setUser );
+                console.log('-> UserUpdateAndDelete.submitHandler(): updateUser() result is: ', result);
+            }
 
             // close the screen
             setShow(false);
         }
+
     };
 
 
     // will delete the username and clear the token and user state
     const handleDeleteButton = async () => {
         // check the password entered is correct before proceeding with the deletion
-
         const result = await deleteUser({ suth_password: authPassword }, setUser);
+        console.log('-> UserUpdateAndDelete.handleDeleteButton(): deleteUser() result is: ', result);
     }
 
 
@@ -172,17 +214,16 @@ const UserUpdateAndDelete = ( { user, setUser } ) => {
                     {/* <label for="username">Username</label> */}
                     <input id="your username" name="username" 
                         type="text"
-                        required
+                        readOnly
                         placeholder="Username" 
                         defaultValue={username}
                         onChange={(e) => setUsername(e.target.value.trim())} 
                     />
-                    
+
 
                     {/* <label for="fullName">Full name</label> */}
                     <input id="fullName" name="fullName" 
                         type="text"
-                        required
                         placeholder="Full name"
                         defaultValue={fullName}
                         onChange={(e) => setFullName(e.target.value)} 
@@ -191,17 +232,14 @@ const UserUpdateAndDelete = ( { user, setUser } ) => {
                     {/* <label for="email">Email</label> */}
                     <input id="email" name="email" 
                         type="text"
-                        required
                         placeholder="Email"
                         defaultValue={email}
                         onChange={(e) => setEmail(e.target.value)} 
                     />
-                    
-                    
+
                     {/* <label for="password">Password</label> */}
                     <input id="password" name="password" 
                         type="password"
-                        required
                         placeholder="New password" 
                         onChange={(e) => setPassword(e.target.value.trim())} 
                     />
@@ -209,7 +247,6 @@ const UserUpdateAndDelete = ( { user, setUser } ) => {
                     {/* <label for="confirmPass">Re-type password</label> */}
                     <input id="confirmPas" name="confirmPass" 
                         type="password"
-                        required
                         placeholder="Re-type new password" 
                         onChange={(e) => setConfirmedPass( e.target.value.trim() )} 
                     />

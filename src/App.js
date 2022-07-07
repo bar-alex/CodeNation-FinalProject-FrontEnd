@@ -19,6 +19,9 @@ import RouteCard from "./components/RouteCard.js";
 // import VerticalBarChart from "./components/VerticalBarChart";
 // import Challenges from "./components/Challenges";
 
+import Setup_insertRoutesToDb from "./components/Setup__insertRoutesToDb";
+
+
 const Boardtainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -72,6 +75,9 @@ const onRowClicked = (item, index) => {
         <Navbar user={user} setUser={setUser} />
 
         </div>
+
+        <Setup_insertRoutesToDb />
+
         <RouteCard routeData = { testRouteData } />
           <h1>Fitness App</h1>
             <Boardtainer>
