@@ -120,7 +120,7 @@ const UserUpdateAndDelete = ( { user, setUser } ) => {
 
     // for the show toggle, either of show or hidden, just reset attempted
     // on show, fill the boxes with the data from the user prop
-    useEffect( () => { 
+    const refreshStatesOnShow = () => {
         setAttempted(false)
 
         setPassword(undefined)
@@ -130,16 +130,16 @@ const UserUpdateAndDelete = ( { user, setUser } ) => {
         setActionFailed(false)
 
         if (show) {
-            setUsername(user?.username);
-            setEmail(user?.email);
-            setFullName(user?.full_name);
+            setUsername(user.username);
+            setEmail(user.email);
+            setFullName(user.full_name);
         } else {
             setUsername(undefined);
             setEmail(undefined);
             setFullName(undefined);
         }
-        
-    },[show] )
+    }
+    useEffect( () => refreshStatesOnShow(),[show] ) // eslint-disable-line react-hooks/exhaustive-deps
 
 
     // i push the values from the props into the local state
