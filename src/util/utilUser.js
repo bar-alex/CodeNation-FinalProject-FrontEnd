@@ -18,10 +18,11 @@ export const createUser = async (userObj, setUser) => {
             body: JSON.stringify( userObj ),
         });
 
+
         const data = await res.json();
         console.log('-> createUser(), data:', data);
 
-        if (data.error) throw new Error(data.error)
+        if (!res.ok || data.error) throw new Error(`FetchError ${res.status} : ${data.error || data}`)
 
         // save user token for autologin
         saveUserToken(data.token)
@@ -29,8 +30,12 @@ export const createUser = async (userObj, setUser) => {
         // set the user to state
         setUser( data.user );
 
+        // return the result
+        return res.ok;
+
     } catch (error) {
         console.log('-> createUser(), error: ',error);
+        return false;
     }
 
 };
@@ -52,15 +57,19 @@ export const updateUser = async (userObj, setUser) => {
         const data = await res.json();
         console.log('-> updateUser(), data:', data);
 
-        if (data.error) throw new Error(data.error)
+        // if (data.error) throw new Error(data.error)
+        if (!res.ok || data.error) throw new Error(`FetchError ${res.status} : ${data.error || data}`)
 
-        // set the user to state
-        setUser( data.user );
+        // set the user to state -- not needed i think
+        setUser( data );
+
+        // returns the result
+        return res.ok;
 
     } catch (error) {
         console.log('-> updateUser(), error: ',error);
+        return false;
     }
-
 };
 
 
@@ -80,14 +89,18 @@ export const deleteUser = async (userObj, setUser) => {
         const data = await res.json();
         console.log('-> deleteUser(), data:', data);
 
-        if (data.error) throw new Error(data.error)
+        if (!res.ok || data.error) throw new Error(`FetchError ${res.status} : ${data.error || data}`)
 
         // remove the user from state, remove the token
         setUser( {} );
         removeUserToken();
 
+        // returns the result
+        return res.ok;
+
     } catch (error) {
         console.log('-> deleteUser(), error: ',error);
+        return false;
     }
 
 };
@@ -107,16 +120,20 @@ export const loginUser = async (userObj, setUser) => {
         const data = await res.json();
         console.log('->loginUser(), data: ',data);
 
-        if (data.error) throw new Error(data.error)
+        if (!res.ok || data.error) throw new Error(`FetchError ${res.status} : ${data.error || data}`)
 
-        // save user token for autologin
+        // save user token for auto-login
         saveUserToken(data.token)
 
         // set the user to state
         setUser( data.user );
 
+        // returns the result
+        return res.ok;
+
     } catch (error) {
         console.log('-> loginUser(), error: ',error);
+        return false;
     }
 };
 
@@ -145,13 +162,14 @@ export const retrieveUser = async (setUser) => {
         const data = await res.json();
         console.log('-> retrieveUser(), data: ',data);
 
-        if (data.error) throw new Error(data.error)
+        if (!res.ok || data.error) throw new Error(`FetchError ${res.status} : ${data.error || data}`)
 
         // set the user to state
         setUser( data );
 
     } catch (error) {
         console.log('-> retrieveUser(), error: ',error);
+        return false;
     }
 }
 

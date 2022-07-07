@@ -64,14 +64,15 @@ const ModalDiv = styled(Modal)`
         height: 30px;
     }
 
-    #pass-invalid-text { font-size:0.8rem; color:coral; }
+    #pass-invalid-text, #auth-pass-invalid, #auth-pass-missing { 
+        font-size:0.8rem; color:red; 
+    } 
 
     /* the buttons of the form */
     > div > form > div {
         display: flex;
         justify-content: space-between;
     }
-
 `;
 
 
@@ -112,10 +113,33 @@ const UserUpdateAndDelete = ( { user, setUser } ) => {
     const [confirmedPass, setConfirmedPass] = useState();
 
     // toggled when a submit attept was done after being shown
-    const [attempted, setAttempted] = useState(false)
+    const [attempted, setAttempted]         = useState(false);
+    // i record that the auth password is invalid
+    const [actionFailed, setActionFailed]   = useState(false);
+
 
     // for the show toggle, either of show or hidden, just reset attempted
-    useEffect( () => setAttempted(false),[show] )
+    // on show, fill the boxes with the data from the user prop
+    const refreshStatesOnShow = () => {
+        setAttempted(false)
+
+        setPassword(undefined)
+        setConfirmedPass(undefined)
+
+        setAuthPassword(undefined)
+        setActionFailed(false)
+
+        if (show) {
+            setUsername(user.username);
+            setEmail(user.email);
+            setFullName(user.full_name);
+        } else {
+            setUsername(undefined);
+            setEmail(undefined);
+            setFullName(undefined);
+        }
+    }
+    useEffect( () => refreshStatesOnShow(),[show] ) // eslint-disable-line react-hooks/exhaustive-deps
 
 
     // i push the values from the props into the local state
@@ -126,7 +150,7 @@ const UserUpdateAndDelete = ( { user, setUser } ) => {
     // },[show,user?.username,user?.email,user?.full_name] )
 
 
-    console.log('-> UserUpdateAndDelete() ', user, username, email, fullName );
+    // console.log('-> UserUpdateAndDelete()  user, username, email, fullName:', user, username, email, fullName );
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -138,30 +162,31 @@ const UserUpdateAndDelete = ( { user, setUser } ) => {
 
         // check the password entered is correct before proceeding with the deletion
 
-        console.log('-> UserUpdateAndDelete.submitHandler():',
-            'authPassword:',authPassword, 'email:', email, 'fullName:', fullName,
-            'password:',password, 'confirmedPass:',confirmedPass)
+        // console.log('-> UserUpdateAndDelete.submitHandler():',
+        //     'authPassword:',authPassword, 'email:', email, 'fullName:', fullName,
+        //     'password:',password, 'confirmedPass:',confirmedPass)
 
         // theck the data is enetered - a simple validation
-        if ( !!authPassword && 
-            (!!email || !!fullName || (!!password && (password===confirmedPass)) )
+        if ( authPassword && 
+            (email || fullName || (password && (password===confirmedPass)) )
         ){
 
             const userObj = { auth_password: authPassword }
-            if (!password && password === confirmedPass)    userObj.password = password;
-            if (fullName!==user.full_name)                  userObj.full_name = fullName;
-            if (email!==user.email)                         userObj.email = email;
+            if (password && password === confirmedPass) userObj.password = password;
+            if (fullName!==user.full_name)              userObj.full_name = fullName;
+            if (email!==user.email)                     userObj.email = email;
 
-            console.log('-> UserUpdateAndDelete.submitHandler(): userObj: ', userObj)
+            console.log('-> UserUpdateAndDelete.submitHandler(): userObj: ', userObj, 'keys no: ', Object.keys(userObj).length )
 
             // testing to make sure i got more fields than the auth_password, otherwise is pointless
-            if ( Object.keys(userObj).length > 1 ) {
-                const result = await updateUser( userObj, setUser );
-                console.log('-> UserUpdateAndDelete.submitHandler(): updateUser() result is: ', result);
-            }
+            const result = 
+                ( Object.keys(userObj).length > 1 ) 
+                && await updateUser( userObj, setUser )
+            console.log('-> UserUpdateAndDelete.submitHandler(): updateUser() result is: ', result);
 
             // close the screen
-            setShow(false);
+            if (result) setShow(false);
+            else setActionFailed(true);
         }
 
     };
@@ -169,9 +194,17 @@ const UserUpdateAndDelete = ( { user, setUser } ) => {
 
     // will delete the username and clear the token and user state
     const handleDeleteButton = async () => {
+
+        // attempt was made, toggle this
+        setAttempted(true)
+
         // check the password entered is correct before proceeding with the deletion
-        const result = await deleteUser({ suth_password: authPassword }, setUser);
+        const result = !!authPassword && await deleteUser({ auth_password: authPassword }, setUser);
         console.log('-> UserUpdateAndDelete.handleDeleteButton(): deleteUser() result is: ', result);
+
+        // close the screen
+        if (result) setShow(false);
+        else setActionFailed(true);
     }
 
 
@@ -205,7 +238,12 @@ const UserUpdateAndDelete = ( { user, setUser } ) => {
                         placeholder="Current password" 
                         onChange={(e) => setAuthPassword(e.target.value.trim())} 
                 />
-                { (attempted && !authPassword) && <p id="auth-pass-invalid">* password is required to continue</p> }
+                { (attempted && !authPassword) 
+                    && <p id="auth-pass-missing">* password is required to continue</p> 
+                }
+                { (attempted && authPassword && actionFailed) 
+                    && <p id="auth-pass-invalid">Operation failed! Is the password correct?</p> 
+                }
 
                 <br/>
                 <form onSubmit={submitHandler}>
@@ -276,6 +314,7 @@ const UserUpdateAndDelete = ( { user, setUser } ) => {
                     >
                         Delete account and related data
                     </button>
+                    
                 </div>
 
             </div>
