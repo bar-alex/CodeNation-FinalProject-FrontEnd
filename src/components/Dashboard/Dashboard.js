@@ -1,9 +1,9 @@
 import React from 'react'
-import Navbar from '../Navbar/Navbar';
+//import Navbar from '../Navbar/Navbar';
 import styled, { css } from 'styled-components';
 import profilePhoto from "../../assets/profile.jpg";
 import { Container, Row, Col } from 'react-bootstrap';
-import LineChart from "../LineChart";
+//import LineChart from "../LineChart";
 import DashboardRoutes from './DashboardRoutes';
 import DashboardChallenges from './DashboardChallenges';
 import DashboardLeaderboard from './DashboardLeaderboard';
