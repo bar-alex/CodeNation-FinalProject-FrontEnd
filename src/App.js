@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
-
+import { Routes as DomRoutes, Route as DomRoute, Link } from "react-router-dom";
 import './App.css';
-
+import Dashbaord from "./components/Dashbaord/Dashboard";
 import styled from 'styled-components';
 
 import { getUserToken, retrieveUser } from './util/utilUser.js';
-
+import leaderboardData from "./components/Leaderboard/LeaderboardData";
 import Leaderboard from "./components/Leaderboard/Leaderboard";
+import routesData from "./components/Routes/RotesData";
 import data from "./components/Leaderboard/LeaderboardData";
 import LineChart from "./components/LineChart";
 import Achievements from "./components/Achievements";
 import Activities from "./components/Activities";
-import Routes from "./components/Routes";
-import Navbar from "./components/Navbar";
+import Routes from "./components/Routes/Routes";
+import Navbar from "./components/Navbar/Navbar";
 import RouteCard from "./components/RouteCard.js";
 
 // import AmodalTest from "./components/AmodalTest.js";
@@ -69,6 +70,21 @@ const onRowClicked = (item, index) => {
       }
   
     return (
+
+
+            //This is new import, commented to be tested
+            
+    //   <div className="App">
+
+    //   <Navbar />
+    //   <DomRoutes>
+    //     <DomRoute path="/" element={<Dashbaord />} />
+    //     <DomRoute path="/routes" element={<Routes data={routesData} />} />
+    //     <DomRoute path="/leaderboard" element={<Leaderboard items={leaderboardData} onClick={() => { }} />} />
+    //   </DomRoutes>
+    // </div>
+
+
       
       <div className = "App">
         <div>
