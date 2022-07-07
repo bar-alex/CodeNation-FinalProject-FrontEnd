@@ -3,56 +3,6 @@ import { useState } from "react";
 import { loginUser, logoutUser } from "../util/utilUser";
 
 
-const UserLogin = ( { user, setUser } ) => {
-    const [username, setUsername] = useState( user?.username );
-    const [password, setPassword] = useState( user?.password );
-
-    const submitHandler = (e) => {
-        e.preventDefault();
-
-        if (!user?.username) {
-            // login
-            console.log("login user - ", username, password);
-            console.log("ToDo: LoginUser -> loginUser( {user}, setUser )");
-
-            loginUser( {username, password}, setUser )
-        } else {
-            // logout
-            console.log("logout user - ", username);
-            console.log("ToDo: LogoutUser -> logoutUser( {user}, setUser({}) )");
-
-            logoutUser( setUser )
-        }
-    };
-    
-    return(
-        <LoginContainer>
-        <form onSubmit={submitHandler}>
-            {/* not login */}
-            { !user?.username && <input type="text" 
-                placeholder="username" 
-                onChange={(e) => setUsername(e.target.value)} 
-                /> 
-            }
-            { !user?.username && <input type="password" 
-                placeholder="password"  
-                onChange={(e) => setPassword(e.target.value)} 
-                /> 
-            }
-            {/* logged in */}
-            { user?.username && <p> Hi, {user.full_name} </p> }
-
-            <button type="submit" value="default action">
-                { !user?.username ? "Login" : "Logout" }
-            </button>
-        </form>
-        </LoginContainer>
-    )
-};
-
-export default UserLogin;
-
-
 const LoginContainer = styled.div`
 
     display: flex;
@@ -113,6 +63,55 @@ const LoginContainer = styled.div`
     }
 `;
 
+
+const UserLogin = ( { user, setUser } ) => {
+    const [username, setUsername] = useState( user?.username );
+    const [password, setPassword] = useState( user?.password );
+
+    const submitHandler = async (e) => {
+        e.preventDefault();
+
+        if (!user?.username) {
+            // login
+            console.log("login user - ", username, password);
+            console.log("ToDo: LoginUser -> loginUser( {user}, setUser )");
+
+            await loginUser( {username, password}, setUser )
+        } else {
+            // logout
+            console.log("logout user - ", username);
+            console.log("ToDo: LogoutUser -> logoutUser( {user}, setUser({}) )");
+
+            await logoutUser( setUser )
+        }
+    };
+    
+    return(
+        <LoginContainer>
+        <form onSubmit={submitHandler}>
+            {/* not login */}
+            { !user?.username && <input type="text" 
+                placeholder="username" 
+                onChange={(e) => setUsername(e.target.value)} 
+                /> 
+            }
+            { !user?.username && <input type="password" 
+                placeholder="password"  
+                onChange={(e) => setPassword(e.target.value)} 
+                /> 
+            }
+            {/* logged in */}
+            { user?.username && <p> Hi, {user.full_name} </p> }
+
+            <button type="submit" value="default action">
+                { !user?.username ? "Login" : "Logout" }
+            </button>
+        </form>
+        </LoginContainer>
+    )
+};
+
+export default UserLogin;
 
 
 // todo: what if he clocks on login if the username + password is not inputed? we need something to display an alert
