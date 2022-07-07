@@ -15,13 +15,17 @@ export const retrieveAllRoutes = async (setter) => {
         const data = await res.json();
         console.log('-> retrieveAllRoutes(), data: ',data);
 
-        if (data.error) throw new Error(data.error)
+        if (!res.ok || data.error) throw new Error(`FetchError ${res.status} : ${data.error || data}`)
 
         // calls the setter to set the state
         setter(data);
 
+        //return result
+        return res.ok;
+
     } catch (error) {
         console.log('-> retrieveAllRoutes(), error: ',error);
+        return false;
     }
 }
 
@@ -41,15 +45,21 @@ export const retrieveNamedRoute = async (routeName, setter) => {
         const data = await res.json();
         console.log('-> retrieveNamedRoute(), data: ',data);
 
-        if (data.error) throw new Error(data.error)
+        if (!res.ok || data.error) throw new Error(`FetchError ${res.status} : ${data.error || data}`)
 
         // set the user to state
         setter( data );
 
+        //return result
+        return res.ok;
+
     } catch (error) {
         console.log('-> retrieveNamedRoute(), error: ',error);
+        return false;
     }
 }
+
+
 
 
 // -------------------------------------------------------------
