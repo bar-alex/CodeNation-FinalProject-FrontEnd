@@ -3,7 +3,7 @@ import './App.css';
 import Leaderboard from './components/Leaderboard';
 import LineChart from "./components/LineChart";
 // import VerticalBarChart from "./components/VerticalBarChart";
-import Achievements from "./components/Achievements";
+// import Achievements from "./components/Achievements";
 import Activities from "./components/Activities";
 import Challenges from "./components/Challenges";
 import Routes from "./components/Routes";
