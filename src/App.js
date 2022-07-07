@@ -11,7 +11,7 @@ import data from "./components/Leaderboard/LeaderboardData";
 import LineChart from "./components/LineChart";
 import Achievements from "./components/Achievements";
 import Activities from "./components/Activities";
-import Routes from "./components/Routes";
+import RoutesMap from "./components/RoutesMap";
 import Navbar from "./components/Navbar";
 import RouteCard from "./components/RouteCard.js";
 
@@ -92,7 +92,7 @@ const onRowClicked = (item, index) => {
           <div>
             <Achievements />
             <Activities />
-            <Routes />
+            <RoutesMap />
           </div>
           {/* <VerticalBarChart /> */}
         </div>
