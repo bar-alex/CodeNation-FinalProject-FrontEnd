@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import UserRegister from './UserRegister';
 import UserLogin from './UserLogin';
+import UserUpdateAndDelete from './UserUpdateAndDelete';
 import { FaTimes, FaBars } from "react-icons/fa";
 
 // import './Navbar.css'
@@ -46,8 +47,10 @@ const Navbar = ( {user, setUser} ) => {
                     )
                 })} 
             </ul>
+
             <UserLogin user={user} setUser={setUser} />
             <UserRegister user={user} setUser={setUser} />
+            <UserUpdateAndDelete user={user} setUser={setUser} />
         </NavContainer>
     )
 }

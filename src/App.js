@@ -19,6 +19,9 @@ import RouteCard from "./components/RouteCard.js";
 // import VerticalBarChart from "./components/VerticalBarChart";
 // import Challenges from "./components/Challenges";
 
+// import Setup_insertRoutesToDb from "./components/Setup__insertRoutesToDb";
+
+
 const Boardtainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -36,14 +39,14 @@ const onRowClicked = (item, index) => {
   
   const App = () => {
     // user object: username, email, full_name
-  const [user, setUser] = useState(undefined);
-  
-  useEffect( ()=>{
-    const token = getUserToken();
-    if (!!token) retrieveUser( setUser );
+    const [user, setUser] = useState(undefined);
+    
+    useEffect( ()=>{
+      const token = getUserToken();
+      if (!!token) retrieveUser( setUser );
 
-    // console.log('-> token: ',token, '\n-> user: ',user.username);
-  },[])
+      // console.log('-> token: ',token, '\n-> user: ',user.username);
+    },[])
 
   
     // chartTitle,         // string or empty -- the title of the chart
@@ -52,18 +55,18 @@ const onRowClicked = (item, index) => {
     // // const verticalValues = [54, 14, 71, 32, 7, 59, 42];
     // const verticalValues = [];
   
-  // this is to test the linechart
-  const horizLabels=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Someday"];
-  const vertLabel="M";
-  const vertValues=[33, 53, 85, 41, 44, 65, 71];
-  
-  const testRouteData =  {  
-      title: "Sample title 2", 
-      activity_type: "cycle",
-      difficulty: "really hard",
-      distance: "10km",
-      time:"2h", 
-    }
+    // this is to test the linechart
+    const horizLabels=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Someday"];
+    const vertLabel="M";
+    const vertValues=[33, 53, 85, 41, 44, 65, 71];
+    
+    const testRouteData =  {  
+        title: "Sample title 2", 
+        activity_type: "cycle",
+        difficulty: "really hard",
+        distance: "10km",
+        time:"2h", 
+      }
   
     return (
       
@@ -72,6 +75,9 @@ const onRowClicked = (item, index) => {
         <Navbar user={user} setUser={setUser} />
 
         </div>
+
+        {/* <Setup_insertRoutesToDb /> */}
+
         <RouteCard routeData = { testRouteData } />
           <h1>Fitness App</h1>
             <Boardtainer>

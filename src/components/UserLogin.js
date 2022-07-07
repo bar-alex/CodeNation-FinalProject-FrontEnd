@@ -7,7 +7,7 @@ const UserLogin = ( { user, setUser } ) => {
     const [username, setUsername] = useState( user?.username );
     const [password, setPassword] = useState( user?.password );
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
 
         if (!user?.username) {
@@ -15,13 +15,13 @@ const UserLogin = ( { user, setUser } ) => {
             console.log("login user - ", username, password);
             console.log("ToDo: LoginUser -> loginUser( {user}, setUser )");
 
-            loginUser( {username, password}, setUser )
+            await loginUser( {username, password}, setUser )
         } else {
             // logout
             console.log("logout user - ", username);
             console.log("ToDo: LogoutUser -> logoutUser( {user}, setUser({}) )");
 
-            logoutUser( setUser )
+            await logoutUser( setUser )
         }
     };
     
