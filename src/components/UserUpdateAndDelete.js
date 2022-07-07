@@ -5,18 +5,18 @@ import Modal from 'react-overlays/Modal';
 import { updateUser, deleteUser } from "../util/utilUser";
 
 
-//---
-import { retrieveAllRoutes, retrieveNamedRoute } from "../util/utilRoutes";
+// //---
+// import { retrieveAllRoutes, retrieveNamedRoute } from "../util/utilRoutes";
 
-const xx = async () => {
-    const strToMap = (yy) => console.log('-> yy: ', console.log(yy, JSON.parse(yy) ) );
+// const xx = async () => {
+//     const strToMap = (yy) => console.log('-> yy: ', console.log(yy, JSON.parse(yy) ) );
 
-    const result = await retrieveAllRoutes( ()=>{} ); 
+//     const result = await retrieveAllRoutes( ()=>{} ); 
 
-    const result2 = await retrieveNamedRoute('river_dash', strToMap); 
-};
-xx();
-//---
+//     const result2 = await retrieveNamedRoute('river_dash', strToMap); 
+// };
+// xx();
+// //---
 
 
 // the 'darkness' behind the dialog
@@ -205,6 +205,7 @@ const UserUpdateAndDelete = ( { user, setUser } ) => {
                         placeholder="Current password" 
                         onChange={(e) => setAuthPassword(e.target.value.trim())} 
                 />
+                { (attempted && !authPassword) && <p id="auth-pass-invalid">* password is required to continue</p> }
 
                 <br/>
                 <form onSubmit={submitHandler}>

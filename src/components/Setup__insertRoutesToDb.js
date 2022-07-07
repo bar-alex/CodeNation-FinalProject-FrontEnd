@@ -120,28 +120,28 @@ const createRoute = async (routeObj, token) => {
 
 
 
-// for our tests only, this deletes a route
-const deleteRoute = async (routeName, token) => {
-    try {
-        // DELETE /routes/:route_name {token} => {success/failure}
-        const res = await fetch(`${process.env.REACT_APP_REST_API}/routes/${routeName}`, {
-            method: "DELETE",
-            headers: { 
-                "Content-Type": "application/json",
-                "authorization": token,
-            },
-        });
+// // for our tests only, this deletes a route
+// const deleteRoute = async (routeName, token) => {
+//     try {
+//         // DELETE /routes/:route_name {token} => {success/failure}
+//         const res = await fetch(`${process.env.REACT_APP_REST_API}/routes/${routeName}`, {
+//             method: "DELETE",
+//             headers: { 
+//                 "Content-Type": "application/json",
+//                 "authorization": token,
+//             },
+//         });
 
-        const data = await res.json();
-        console.log('-> deleteRoute(), data:', data);
+//         const data = await res.json();
+//         console.log('-> deleteRoute(), data:', data);
 
-        if (data.error) throw new Error(data.error)
+//         if (data.error) throw new Error(data.error)
 
-    } catch (error) {
-        console.log('-> deleteRoute(), error: ',error);
-    }
+//     } catch (error) {
+//         console.log('-> deleteRoute(), error: ',error);
+//     }
 
-};
+// };
 
 // =====================================================
 
