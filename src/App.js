@@ -10,7 +10,7 @@ import Leaderboard from "./components/Leaderboard/Leaderboard";
 import data from "./components/Leaderboard/LeaderboardData";
 import LineChart from "./components/LineChart";
 import Achievements from "./components/Achievements";
-import Activities from "./components/Activities";
+import RouteActivities from "./components/RouteActivities";
 import Routes from "./components/Routes";
 import Navbar from "./components/Navbar";
 import RouteCard from "./components/RouteCard.js";
@@ -79,6 +79,10 @@ const onRowClicked = (item, index) => {
         {/* <Setup_insertRoutesToDb /> */}
 
         <RouteCard routeData = { testRouteData } />
+
+        {/* route id is hardcoded for test */}
+        <RouteActivities routeId={"62c24e2447eb4b4cebf620c7"} userId={user?.id}/>
+
           <h1>Fitness App</h1>
             <Boardtainer>
                 <Leaderboard items={data} onClick={onRowClicked} />
@@ -91,7 +95,7 @@ const onRowClicked = (item, index) => {
           </div>
           <div>
             <Achievements />
-            <Activities />
+            <RouteActivities />
             <Routes />
           </div>
           {/* <VerticalBarChart /> */}

@@ -1,12 +1,12 @@
 
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 import { useState } from 'react';
 import UserRegister from './UserRegister';
 import UserLogin from './UserLogin';
 import UserUpdateAndDelete from './UserUpdateAndDelete';
 import { FaTimes, FaBars } from "react-icons/fa";
-
-// import './Navbar.css'
+import logo from "../assets/logo.png";
 
 
 const Navbar = ( {user, setUser} ) => {
@@ -14,10 +14,10 @@ const Navbar = ( {user, setUser} ) => {
     // Set the menu items to an array so if we ever need to add, update or change items in the navbar, the code is right and will be easier to do so.
     const MenuItems = 
     [
-        { title: 'Home',        url: '#' },
-        { title: 'Routes',      url: '#' },
-        // { title: 'Exercises',   url: '#' },
-        { title: 'Leaderboard', url: '#' },
+        { title: 'Home',        url: '/' },
+        { title: 'Routes',      url: '/routes' },
+        { title: 'Activities',   url: '#' },
+        { title: 'Leaderboard', url: '/leaderboard' },
     ];
     
     const [ clicked, setClicked ] = useState(false);
@@ -26,11 +26,11 @@ const Navbar = ( {user, setUser} ) => {
 
     return(
         <NavContainer clicked={clicked}>
-            {/* i tag includes a logo which is imported from fontawesome.com (will be changed when we deicde a logo). "fab fa-react is just the name of the logo that was imported from the website"  */}
-            {/* <h1 id="navbar-logo">React<FaReact /></h1> */}
-            {/* The code below allows us to change the 'menu' icon into the 'X' icon when it is clicked.
-                The i tag below allows us to import the 'X' icon and the 'menu' icon, which you can see in the navbar when in mobile version. */}
-            <h1 id="navbar-logo">React</h1>
+
+            <h1 className="navbar-logo">
+                Fitverse
+                <img className="navbar-logo-image" src={logo} alt="logo" />
+            </h1>
 
             <div id="menu-icon" onClick={handleClick}>
                 { clicked ? <FaTimes/> : <FaBars/> }
@@ -40,9 +40,9 @@ const Navbar = ( {user, setUser} ) => {
                 {MenuItems.map((item, index) => {
                     return (
                         <li key={index}>
-                            <a href={item.url}>
+                            <Link to={item.url}>
                                 {item.title}
-                            </a>
+                            </Link>
                         </li>
                     )
                 })} 
@@ -60,7 +60,6 @@ export default Navbar;
 
 
 const NavContainer = styled.nav`
-
     overflow: hidden;
     background: linear-gradient(90deg, rgb(110, 94, 254, 1) 0%, rgba(73, 63, 252, .7) 100%);
     height: 60px;
