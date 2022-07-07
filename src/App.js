@@ -11,17 +11,46 @@ const Title = styled.div`
   color: white;
   padding: 10vh;
   `
+
+const CenterPage = styled.div`
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  `
+const LoginBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  border-radius: 25px;
+  width: 350px;
+  height: 250px;
+  background-color: rgba(0, 0, 0, 0.4);
+  `
+const LoginBoxLabel = styled.div`
+  display: flex;
+  color: white;
+  margin: 20px;
+`
+const LoginBoxInput = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+`
 const Spacer = styled.div`
-  padding-bottom: 50%;
+  padding-bottom: 25%;
 `
 
 const Background = styled.div`
   z-index: bottom;
   background: url(${BackgroundImage});
-  -webkit-background-height: cover;
+  /* -webkit-background-height: cover; 
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover; */
   `
 
 const TopDiv = styled.div`
@@ -53,7 +82,30 @@ const App = () => {
         <Title>
           <h1>Strider</h1>
         </Title>
-          
+        <CenterPage>
+
+          <LoginBox>
+            <form>
+                <LoginBoxLabel>
+                  <label htmlFor='Username'>Username</label>
+                </LoginBoxLabel>
+                <LoginBoxInput>
+                  <input type='text' id='Username' name='Username'></input>
+                </LoginBoxInput>
+              
+
+                <LoginBoxLabel>
+                  <label htmlFor='Password'>Password</label>
+                </LoginBoxLabel>
+                <LoginBoxInput>
+                  <input type='text' id='Password' name='Password'></input>
+                </LoginBoxInput>
+            </form>
+          </LoginBox>
+
+        </CenterPage>  
+        
+
           <Spacer />
         </Background>
         <TopDiv>
