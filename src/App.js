@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Routes as DomRoutes, Route as DomRoute, Link } from "react-router-dom";
+import { Routes as DomRoutes, Route as DomRoute } from "react-router-dom";
 import './App.css';
-import Dashbaord from "./components/Dashbaord/Dashboard";
+import Dashbaord from "./components/Dashboard/Dashboard";
 import styled from 'styled-components';
 
 import { getUserToken, retrieveUser } from './util/utilUser.js';
@@ -89,6 +89,12 @@ const onRowClicked = (item, index) => {
       <div className = "App">
         <div>
         <Navbar user={user} setUser={setUser} />
+        <Navbar />
+      <DomRoutes>
+        <DomRoute path="/" element={<Dashbaord />} />
+        <DomRoute path="/routes" element={<Routes data={routesData} />} />
+        <DomRoute path="/leaderboard" element={<Leaderboard items={leaderboardData} onClick={() => { }} />} />
+      </DomRoutes>
 
         </div>
 
