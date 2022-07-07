@@ -1,73 +1,78 @@
-import Navbar from "./components/Navbar/Navbar"
+import React from 'react';
+import './App.css';
 import styled from 'styled-components';
 import Leaderboard from "./components/Leaderboard/Leaderboard";
 import data from "./components/Leaderboard/LeaderboardData";
-import LineChart from "./components/LineChart";
-import Achievements from "./components/Achievements";
-import Activities from "./components/Activities";
-import Routes from "./components/Routes";
+import Navbar from "./components/Navbar/Navbar";
+import BackgroundImage from "./components/img/landingPage3.jpg"
 
-const Boardtainer = styled.div`
-  flex-direction: column;
-  align-items: center;
-  min-height: 50vh;
-  width: 600px;
-  padding: 20px;
-`;
+const Title = styled.div`
+  font-size: calc(15px + 3vh);
+  color: white;
+  padding: 10vh;
+  `
+const Spacer = styled.div`
+  padding-bottom: 50%;
+`
+
+const Background = styled.div`
+  z-index: bottom;
+  background: url(${BackgroundImage});
+  -webkit-background-height: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  `
+
+const TopDiv = styled.div`
+  /* color: white; */
+  display: flex;
+  justify-content: center;
+  align-content: right;
+  text-justify: center;
+  height: 100%;
+  /* border: 2px red solid; */
+`
+
+const LeaderBoardBox = styled.div`
+ border: 10px red dashed;
+ `
 
 const onRowClicked = (item, index) => {
-    console.log(item, index);
-  }
-  
-  
-  const App = () => {
-    // user object: username, email, full_name
-    // const [user, setUser] = useState({});
-  
-    // chartTitle,         // string or empty -- the title of the chart
-    // const horizontalLabels = ['x', 'y', 'z', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    // const verticalLabel = 'Distance X';
-    // // const verticalValues = [54, 14, 71, 32, 7, 59, 42];
-    // const verticalValues = [];
-  
-  // this is to test the linechart
-  const horizLabels=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Someday"];
-  const vertLabel="M";
-  const vertValues=[33, 53, 85, 41, 44, 65, 71];
-  
-  
-  
-    return (
-      
-      <div className = "App">
-        <div>
-          <Navbar />
-        </div>
-          <h1>Fitness App</h1>
-            <Boardtainer>
-                <Leaderboard items={data} onClick={onRowClicked} />
-            </Boardtainer>
-          <div style = { {width:"600px"} }>
-            <LineChart 
-            horizLabels={horizLabels}  
-            vertLabel={vertLabel} 
-            vertValues={vertValues} />
-          </div>
-          <div>
-            <Achievements />
-            <Activities />
-            <Routes />
-          </div>
-          {/* <VerticalBarChart /> */}
-        </div>
-        
-  
-    );
-  };
-  
-  export default App;
-  
-  // chartTitle,         // string or empty -- the title of the chart
-  // horizontalLabels,   // array: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  // verticalLabel,      // 'Distance'
-  // verticalValues,     // array: values for the vertical point, one for each horizontal label
+  console.log(item, index);
+}
+
+const App = () => {
+
+  return (
+    <div className = "App">
+      <div>
+        <Navbar />
+      </div>
+        <Background>
+        <Title>
+          <h1>Strider</h1>
+        </Title>
+          
+          <Spacer />
+        </Background>
+        <TopDiv>
+          
+        </TopDiv>
+        <LeaderBoardBox>
+          <h1>Who's winning</h1>
+            <Leaderboard items={data} onClick={onRowClicked} />
+          </LeaderBoardBox>
+        <>
+        </>
+        {/* <VerticalBarChart /> */}
+      </div>
+  );
+};
+
+export default App;
+
+// chartTitle,         // string or empty -- the title of the chart
+// horizontalLabels,   // array: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+// verticalLabel,      // 'Distance'
+// verticalValues,     // array: values for the vertical point, one for each horizontal label
