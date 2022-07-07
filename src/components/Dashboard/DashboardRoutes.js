@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container as BootContainer, Row } from 'react-bootstrap';
 import styled from 'styled-components';
-import RouteCard from "../Routes/RouteCard";
+import RouteCard from "../RouteCard";
 import dashboardRoutesData from './DashboardRoutesData';
 
 const Container = styled(BootContainer)`
