@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { FaRunning } from "react-icons/fa";
 import { BiCycling } from "react-icons/bi";
 import { GrSwim } from "react-icons/gr";
@@ -50,7 +50,7 @@ const Time = styled.span`
 
 
 
-const RouteCard = ({ venue, difficulty, distance, time, event }) => {
+const RouteCard2 = ({ venue, difficulty, distance, time, event }) => {
     return (
         <Container>
             <HeaderContainer>
@@ -67,4 +67,4 @@ const RouteCard = ({ venue, difficulty, distance, time, event }) => {
     )
 };
 
-export default RouteCard;
+export default RouteCard2;

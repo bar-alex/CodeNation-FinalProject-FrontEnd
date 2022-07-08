@@ -9,59 +9,12 @@ import { FaTimes, FaBars } from "react-icons/fa";
 import logo from "../assets/logo.png";
 
 
-const Navbar = ( {user, setUser} ) => {
-
-    // Set the menu items to an array so if we ever need to add, update or change items in the navbar, the code is right and will be easier to do so.
-    const MenuItems = 
-    [
-        { title: 'Home',        url: '/' },
-        { title: 'Routes',      url: '/routes' },
-        { title: 'Activities',   url: '#' },
-        { title: 'Leaderboard', url: '/leaderboard' },
-    ];
-    
-    const [ clicked, setClicked ] = useState(false);
-
-    const handleClick = () => setClicked( !clicked );
-
-    return(
-        <NavContainer clicked={clicked}>
-
-            <h1 className="navbar-logo">
-                Fitverse
-                <img className="navbar-logo-image" src={logo} alt="logo" />
-            </h1>
-
-            <div id="menu-icon" onClick={handleClick}>
-                { clicked ? <FaTimes/> : <FaBars/> }
-            </div>
-
-            <ul id="nav-menu" >
-                {MenuItems.map((item, index) => {
-                    return (
-                        <li key={index}>
-                            <Link to={item.url}>
-                                {item.title}
-                            </Link>
-                        </li>
-                    )
-                })} 
-            </ul>
-
-            <UserLogin user={user} setUser={setUser} />
-            <UserRegister user={user} setUser={setUser} />
-            <UserUpdateAndDelete user={user} setUser={setUser} />
-        </NavContainer>
-    )
-}
-
-export default Navbar;
-
 
 
 const NavContainer = styled.nav`
+
     overflow: hidden;
-    background: linear-gradient(90deg, rgb(110, 94, 254, 1) 0%, rgba(73, 63, 252, .7) 100%);
+    background: linear-gradient(90deg, rgb(110, 94, 254, .7) 0%, rgba(73, 63, 252, .7) 100%);
     height: 60px;
     display: flex;
     /* justify-content: flex-start; */
@@ -74,6 +27,15 @@ const NavContainer = styled.nav`
         margin-left: 20px;
         cursor: pointer;
         margin-right: 20px;
+        text-align: center;
+        display:flex;
+        align-items:center;
+    }
+
+    #navbar-logo img {
+        /* border: 1px solid red; */
+        object-fit: cover;
+        height: 45px;
     }
 
     #menu-icon {
@@ -82,6 +44,7 @@ const NavContainer = styled.nav`
 
     #nav-menu {
         /* border: 1px solid red; */
+        /* align-self: center; */
         display: grid;
         grid-template-columns: repeat(5,auto);
         grid-gap: 4px;
@@ -91,6 +54,7 @@ const NavContainer = styled.nav`
         justify-content: end;
         /* margin-right: 2rem; */
         margin-right: auto;
+        margin-bottom: 0;
     }
 
     ul a {
@@ -99,6 +63,7 @@ const NavContainer = styled.nav`
         color: white;
         text-decoration: none;
         padding: 6px;
+        /* align-self: center; */
         /* padding: 0.3rem 0.3rem; */
         /* padding: 0.5rem 1 rem; */
         /* padding: 0.5rem 3 rem; */
@@ -170,41 +135,52 @@ const NavContainer = styled.nav`
 `;
 
 
+const Navbar = ( {user, setUser} ) => {
 
-// class Navbar extends Component {
-//     state = { clicked: false }
+    // Set the menu items to an array so if we ever need to add, update or change items in the navbar, the code is right and will be easier to do so.
+    const MenuItems = 
+    [
+        { title: 'Home',        url: '/' },
+        { title: 'Routes',      url: '/routes' },
+        { title: 'Activities',   url: '#' },
+        { title: 'Leaderboard', url: '/leaderboard' },
+    ];
+    
+    const [ clicked, setClicked ] = useState(false);
 
-//     handleClick = () => {
-//         this.setState({ clicked: !this.state.clicked})
-//     }
+    const handleClick = () => setClicked( !clicked );
 
-//     render() {
-//         return(
-//             <nav className="NavbarItems">
-//                 {/* i tag includes a logo which is imported from fontawesome.com (will be changed when we deicde a logo). "fab fa-react is just the name of the logo that was imported from the website"  */}
-//                 <h1 className="navbar-logo">React<i className="fab fa-react"></i></h1>
-//                  {/* The code below allows us to change the 'menu' icon into the 'X' icon when it is clicked.
-//                      The i tag below allows us to import the 'X' icon and the 'menu' icon, which you can see in the navbar when in mobile version. */}
-//
-//                 <div className="menu-icon" onClick={this.handleClick}>
-//                     <i className={this.state.clicked ? 'fas fa-times' : 'fa fa-bars'}></i>
-//                 </div>
-//                 <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
-//                     {MenuItems.map((item, index) => {
-//                         return (
-//                             <li key={index}>
-//                                 <a className={item.cName} href={item.url}>
-//                                 {item.title}
-//                                 </a>
-//                             </li>
-//                         )
-//                     })} 
-//                 </ul>
-//                 {/* <Button>Sign up</Button> */}
-//                 <RegisterUser />
-//             </nav>
-//         )
-//     }
-// }
+    return(
+        <NavContainer clicked={clicked}>
 
-// export default Navbar
+            <div id="navbar-logo">
+                <h1>Fitverse</h1>
+                <img src={logo} alt="logo" />
+            </div>
+
+            <div id="menu-icon" onClick={handleClick}>
+                { clicked ? <FaTimes/> : <FaBars/> }
+            </div>
+
+            <ul id="nav-menu" >
+                {MenuItems.map((item, index) => {
+                    return (
+                        <li key={index}>
+                            <Link to={item.url}>
+                                {item.title}
+                            </Link>
+                        </li>
+                    )
+                })} 
+            </ul>
+
+            <UserLogin user={user} setUser={setUser} />
+            <UserRegister user={user} setUser={setUser} />
+            <UserUpdateAndDelete user={user} setUser={setUser} />
+        </NavContainer>
+    )
+}
+
+export default Navbar;
+
+

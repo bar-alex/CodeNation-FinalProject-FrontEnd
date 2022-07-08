@@ -12,7 +12,7 @@ const LoginContainer = styled.div`
     p { 
         color: white; 
         display:inline-block; 
-        margin-right: 5px;
+        margin-right: 10px;
     };
 
     input[type=text], input[type=password] {
