@@ -54,7 +54,12 @@ function sort_compare(a, b) {
   return b.distance - a.distance
 }
 
-const Leaderboard = ({ items, onClick }) => {
+//const Leaderboard = ({ items, onClick }) => {
+const Leaderboard = ( {user, setUser} ) => {
+
+  const items = []; // this is just so it won't break
+
+  const onClick = () => console.log('onclick triggered - so it wont break');
 
   const columns = [
     { name: 'overall', align: 'center', width: '70px' },

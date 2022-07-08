@@ -1,10 +1,11 @@
-import React from 'react';
-import './App.css';
+// import React from 'react';
+// import './App.css';
+// import Leaderboard from "./components/Leaderboard/Leaderboard";
+// import data from "./components/Leaderboard/LeaderboardData";
+
 import styled from 'styled-components';
-import Leaderboard from "./components/Leaderboard/Leaderboard";
-import data from "./components/Leaderboard/LeaderboardData";
-import Navbar from "./components/Navbar/Navbar";
-import BackgroundImage from "./components/img/landingPage3.jpg"
+// import Navbar from "./Navbar";
+import BackgroundImage from "../assets/landing/landingPage3.jpg"
 
 const Title = styled.div`
   font-size: calc(15px + 3vh);
@@ -35,20 +36,14 @@ const TopDiv = styled.div`
 `
 
 const LeaderBoardBox = styled.div`
- border: 10px red dashed;
- `
+  border: 10px red dashed;
+`
 
-const onRowClicked = (item, index) => {
-  console.log(item, index);
-}
-
-const App = () => {
+const LandingPage = () => {
 
   return (
     <div className = "App">
-      <div>
-        <Navbar />
-      </div>
+      {/* <div> <Navbar /> </div> */}
         <Background>
         <Title>
           <h1>Strider</h1>
@@ -59,7 +54,7 @@ const App = () => {
         <TopDiv>
           <LeaderBoardBox>
           <h1>Who's winning</h1>
-            <Leaderboard items={data} onClick={onRowClicked} />
+            {/* <Leaderboard items={data} onClick={onRowClicked} /> */}
           </LeaderBoardBox>
         </TopDiv>
         <>
@@ -69,7 +64,7 @@ const App = () => {
   );
 };
 
-export default App;
+export default LandingPage;
 
 // chartTitle,         // string or empty -- the title of the chart
 // horizontalLabels,   // array: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];

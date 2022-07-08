@@ -1,9 +1,9 @@
-import React from 'react'
-import Navbar from '../Navbar/Navbar';
-import styled, { css } from 'styled-components';
+// import React from 'react'
+// import Navbar from '../../not_needed/Navbar_nikolai/Navbar';
+import styled from 'styled-components';
 import profilePhoto from "../../assets/profile.jpg";
 import { Container, Row, Col } from 'react-bootstrap';
-import LineChart from "../LineChart";
+// import LineChart from "../LineChart";
 import DashboardRoutes from './DashboardRoutes';
 import DashboardChallenges from './DashboardChallenges';
 import DashboardLeaderboard from './DashboardLeaderboard';
@@ -48,13 +48,13 @@ const ProfileImageContainer = styled(Container)`
 const Title = styled.h1`
     font-size: 30px;
     font-weight: bold;
-    padding: 20px
+    padding: 20px;
 `;
 
 
-const Dashboard = () => {
+const Dashboard = ( {user, setUser} ) => {
     return (
-        <>
+        <div>
             <ImageContainer fluid>
                 <Row>
                     <Col md={4}>
@@ -103,7 +103,7 @@ const Dashboard = () => {
             </Container>
 
 
-        </>
+        </div>
     )
 };
 
