@@ -61,7 +61,7 @@ const App = () => {
         {/* <RouteActivities routeId={"62c24e2447eb4b4cebf620c7"} userId={user?.id}/> */}
         {/* <LineChart horizLabels={horizLabels} vertLabel={vertLabel} vertValues={vertValues} /> */}
         
-        <Dom Routes>
+        <DomRoutes>
           {/* <DomRoute path="/" element={ user ? <Dashboard user={user} setUser={setUser} /> : <LandingPage /> } /> */}
           <DomRoute path="/" element={ <LandingPage /> } />
           <DomRoute path="/routes"      element={<RoutesList user={user} setUser={setUser} routes={routes} />} />
@@ -76,7 +76,7 @@ const App = () => {
               />
               } 
             />
-        </Dom>
+        </DomRoutes>
       </div>
     );
 };
