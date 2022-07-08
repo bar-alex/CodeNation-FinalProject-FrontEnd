@@ -1,10 +1,7 @@
 import React from 'react';
-// import './App.css';
 import styled from 'styled-components';
-// import Leaderboard from "./components/Leaderboard/Leaderboard";
 // import data from "./components/Leaderboard/LeaderboardData";
-// import BackgroundImage from "..src/assets/cycling.jpg"
-import LoginUser from './LoginUser';
+import BackgroundImage from "..src/assets/cycling.jpg"
 
 const Title = styled.div`
   font-size: calc(15px + 3vh);
@@ -16,17 +13,17 @@ const CenterPage = styled.div`
   align-content: center;
   justify-content: center;
   `
-const LoginBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  border-radius: 25px;
-  width: 350px;
-  height: 250px;
-  background-color: rgba(0, 0, 0, 0.4);
-  `
+// const LoginBox = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-content: center;
+//   align-items: center;
+//   border-radius: 25px;
+//   width: 350px;
+//   height: 250px;
+//   background-color: rgba(0, 0, 0, 0.4);
+//   `
 // const LoginBoxLabel = styled.div`
 //   display: flex;
 //   color: white;
@@ -37,14 +34,14 @@ const Spacer = styled.div`
   padding-bottom: 25%;
 `
 
-// const Background = styled.div`
-//   z-index: bottom;
-//   background: url(${BackgroundImage});
-//   -webkit-background-height: cover; 
-//   -moz-background-size: cover;
-//   -o-background-size: cover;
-//   background-size: cover;
-//   `
+const Background = styled.div`
+  z-index: bottom;
+  background: url(${BackgroundImage});
+  -webkit-background-height: cover; 
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  `
 
 const TopDiv = styled.div`
   /* color: white; */
@@ -68,46 +65,22 @@ const LandingPage = () => {
 
   return (
     <div className = "App">
-      <div>
-        <Navbar />
-      </div>
-        {/* <Background> */}
+        <Background />
         <Title>
           <h1>Fitverse</h1>
         </Title>
         <CenterPage>
-          <LoginBox>
-            {/* <form>
-                <LoginBoxLabel>
-                  <label htmlFor='Username'>Username</label>
-                </LoginBoxLabel>
-
-                  <input type='text' id='Username' name='Username'></input>
-              
-
-                <LoginBoxLabel>
-                  <label htmlFor='Password'>Password</label>
-                </LoginBoxLabel>
-                
-                  <input type='text' id='Password' name='Password'></input>
-            </form> */}
-            <LoginUser />
-          </LoginBox>
         </CenterPage>  
           <Spacer />
         {/* </Background> */}
         <TopDiv>
           
         </TopDiv>
-        {/* <LeaderBoardBox>
-          <h1>Who's winning</h1>
-            <Leaderboard items={data} onClick={onRowClicked} />
-          </LeaderBoardBox> */}
         <>
         </>
         {/* <VerticalBarChart /> */}
       </div>
-  );
+  )
 };
 
 export default LandingPage;

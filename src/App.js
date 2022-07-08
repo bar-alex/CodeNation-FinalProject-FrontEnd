@@ -8,6 +8,8 @@ import { getUserToken, retrieveUser } from './util/utilUser.js';
 import Leaderboard from "./components/Leaderboard/Leaderboard";
 import LandingPage from './components/LandingPage';
 import RoutesList   from "./components/Routes/RoutesList";
+import { retrieveAllRoutes } from './util/utilRoutes';
+import Navbar from './components/Navbar';
 // import AmodalTest from "./components/AmodalTest.js";
 // import VerticalBarChart from "./components/VerticalBarChart";
 // import Challenges from "./components/Challenges";
@@ -42,7 +44,7 @@ const App = () => {
     const token = getUserToken();
     if (!!token) retrieveUser( setUser );
     // console.log('-> App - token: ',token, '\n-> user: ',user?.username);
-    
+
     retrieveAllRoutes( setRoutes )
   },[])
 

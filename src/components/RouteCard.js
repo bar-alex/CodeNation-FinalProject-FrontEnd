@@ -5,36 +5,6 @@ import { FaRunning } from "react-icons/fa";
 import { FaBiking } from "react-icons/fa";
 
 
-<<<<<<< HEAD
-// props.routeData.title ...
-const RouteCard = ( { routeData } ) => {
-
-    return (
-        <Card>
-            {/* top side */}
-            <div>
-                <h2>{ routeData?.title}</h2>
-                <h2>{ 
-                    routeData?.activity_type==='run'?<FaRunning/>: 
-                    routeData?.activity_type==='cycle'?<FaBiking/>:<FaSwimmer/> 
-                }</h2>
-            </div>
-
-            {/* bottom side */}
-            <div>
-                <p>{routeData?.difficulty}</p>
-                <p>{routeData?.distance}</p>
-                <p>{routeData?.time}</p>
-            </div>
-        </Card>
-    )
-
-}
-
-export default RouteCard;
-
-=======
->>>>>>> 1d9f2ffb293f96744337d81328514aec1234bd0e
 
 const Card = styled.div`
     
