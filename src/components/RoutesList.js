@@ -48,9 +48,12 @@ const TabItem = styled.span`
     margin: 10px;
     cursor: pointer;
 
+    text-shadow: #2e2e2e 0 4px 5px;
+
     ${props => props.selected === props.value && css`
         text-decoration: underline;
-        color: #20C6EC;
+        /* color: #20C6EC; */
+        color: salmon;
     `}
 `;
 

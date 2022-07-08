@@ -128,6 +128,7 @@ const NavContainer = styled.nav`
             left: -100%;
             opacity: 1;
             transition: all 0.5s ease;
+            /* text-shadow: #2e2e2e 0 4px 5px; */
 
             /* .nav-menu.active */
             ${ (props)=> !props.clicked ? "" : "background: #6668f4;"}      /* backgroud color when the menu is active ?! */
@@ -139,11 +140,13 @@ const NavContainer = styled.nav`
             padding: 2rem;
             width: 100%;
             display: table;
+            /* text-shadow: #2e2e2e 0 4px 5px; */
         }
 
         ul a:hover {
             background-color: #7577fa;      /* hover background color on links */
             border-radius: 0;
+            /* text-shadow: #2e2e2e 0 4px 5px; */
         }
 
     }

@@ -70,6 +70,12 @@ const Card = styled.div`
     background-image: url(${ ()=>picCovers[ Math.floor(Math.random()*picCovers.length) ] });
     background-position: ${()=>Math.floor(Math.random()*100)}% ${()=>Math.floor(Math.random()*100)}%;
 
+    h3, p {
+        /* color: #d9d9d9; */
+        /* background-color: #bababa; */
+        text-shadow: #2e2e2e 0 4px 5px;
+    }
+
 
     div {
         display: flex;
