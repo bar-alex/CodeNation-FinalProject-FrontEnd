@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import React from 'react'
 // import Navbar from '../Navbar/Navbar';
-=======
-// import React from 'react'
-// import Navbar from '../../not_needed/Navbar_nikolai/Navbar';
->>>>>>> 1d9f2ffb293f96744337d81328514aec1234bd0e
 import styled from 'styled-components';
 import profilePhoto from "../../assets/profile.jpg";
 import { Container, Row, Col } from 'react-bootstrap';

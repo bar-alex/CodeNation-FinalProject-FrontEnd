@@ -6,13 +6,11 @@ import styled from 'styled-components';
 // import BackgroundImage from "..src/assets/cycling.jpg"
 import LoginUser from './LoginUser';
 
-
 const Title = styled.div`
   font-size: calc(15px + 3vh);
   color: white;
   padding: 10vh;
   `
-
 const CenterPage = styled.div`
   display: flex;
   align-content: center;
@@ -73,15 +71,11 @@ const LandingPage = () => {
       <div>
         <Navbar />
       </div>
-
-    
-
         {/* <Background> */}
         <Title>
-          <h1>Strider</h1>
+          <h1>Fitverse</h1>
         </Title>
         <CenterPage>
-
           <LoginBox>
             {/* <form>
                 <LoginBoxLabel>
@@ -96,16 +90,10 @@ const LandingPage = () => {
                 </LoginBoxLabel>
                 
                   <input type='text' id='Password' name='Password'></input>
-               
             </form> */}
-
             <LoginUser />
-
           </LoginBox>
-
         </CenterPage>  
-        
-
           <Spacer />
         {/* </Background> */}
         <TopDiv>
