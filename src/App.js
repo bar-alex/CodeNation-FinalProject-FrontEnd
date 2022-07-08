@@ -3,12 +3,13 @@ import { Routes as DomRoutes, Route as DomRoute } from "react-router-dom";
 // import styled from 'styled-components';
 import './App.css';
 import { getUserToken, retrieveUser } from './util/utilUser.js';
+import { retrieveAllRoutes } from './util/utilRoutes';
 
 
 import Navbar       from "./components/Navbar";
 import LandingPage  from "./components/LandingPage";
 // import Dashboard    from "./components/Dashboard/Dashboard";
-import RoutesList   from "./components/Routes/RoutesList";
+import RoutesList   from "./components/RoutesList";
 import Leaderboard  from "./components/Leaderboard/Leaderboard";
 
 
@@ -19,7 +20,7 @@ import Leaderboard  from "./components/Leaderboard/Leaderboard";
 
 
 // import leaderboardData from "./components/Leaderboard/LeaderboardData";
-// import routesData from "./components/Routes/RotesData";
+// import routesData from "./components/ Routes/RotesData";
 // import Setup_insertRoutesToDb from "./components/Setup__insertRoutesToDb";
 
 // this is to test the line-chart
@@ -32,10 +33,17 @@ const App = () => {
   // user object: username, email, full_name
   const [user, setUser] = useState(undefined);
 
+  // the routes
+  const [routes, setRoutes] = useState([])
+
   useEffect( ()=>{
     const token = getUserToken();
     if (!!token) retrieveUser( setUser );
     // console.log('-> App - token: ',token, '\n-> user: ',user?.username);
+    
+    // get the routes and fill the routes state
+    retrieveAllRoutes( setRoutes )
+
   },[])
 
   return (
@@ -51,7 +59,7 @@ const App = () => {
         <DomRoutes>
           {/* <DomRoute path="/" element={ user ? <Dashboard user={user} setUser={setUser} /> : <LandingPage /> } /> */}
           <DomRoute path="/" element={ <LandingPage /> } />
-          <DomRoute path="/routes"      element={<RoutesList user={user} setUser={setUser} />} />
+          <DomRoute path="/routes"      element={<RoutesList user={user} setUser={setUser} routes={routes} />} />
           <DomRoute path="/leaderboard" element={<Leaderboard user={user} setUser={setUser} />} />
         </DomRoutes>
       </div>
