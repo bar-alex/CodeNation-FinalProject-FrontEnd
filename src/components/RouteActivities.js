@@ -19,7 +19,7 @@ import { FaBiking } from "react-icons/fa";
 
 const DivPage = styled.div`
     
-    margin-top: 20px;
+    margin-top: 80px;
     display: flex;
     flex-flow: row wrap;
     /* justify-content: center; */

@@ -15,6 +15,7 @@ import RoutesMap from "./RoutesMap";
 const Container = styled.div`
     text-align: start;
     width: 100%;
+    margin-top: 60px;
 `;
 
 // const ElementContainer = styled(BootContainer)`
@@ -53,17 +54,24 @@ const TabItem = styled.span`
     `}
 `;
 
-const Title = styled.h1`
-    font-size: 30px;
-    font-weight: bold;
-    padding: 20px;
-`;
+// const Title = styled.h1`
+//     font-size: 30px;
+//     font-weight: bold;
+//     padding: 20px;
+// `;
 
 const DivContent = styled.div`
     display: flex;
 
     #map-div {
-        width: 50%;
+        width: 47%;
+
+        /* width: 200px; */
+        position: fixed;
+        /* bottom:0px; */
+        top: 120px;
+        right: 20px;
+
     }
 
 `;
@@ -87,7 +95,7 @@ const RoutesList = ({ routes: data, user, setUser }) => {
     return (
 
         <Container>
-            <Title>Pick a Route</Title>
+            {/* <Title>Pick a Route</Title> */}
             <TabContainer>
                 <TabItem selected={selected} value="all"      
                     onClick={() => setSelected("all")}
