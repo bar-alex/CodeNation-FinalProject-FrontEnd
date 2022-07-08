@@ -52,8 +52,8 @@ const Card = styled.div`
     
     ${ (props) => props.margin && `margin-bottom: ${props.margin}px;` } 
 
-    width: 250px;
-    height: 100px;
+    width: 300px;
+    height: 150px;
     border-radius: 5px;
     border: 1px solid rgb(0,0,0,.8);
     box-shadow: 10px 10px 14px -12px rgba(0,0,0,0.68);
@@ -86,14 +86,14 @@ const Card = styled.div`
 
 
 // props.routeData.title ...
-const RouteCard = ( { routeData, margin } ) => {
+const RouteCard = ( { routeData, onClick } ) => {
 
     // console.log('->RouteCard: ', routeData);
 
     const distMU = (routeData?.activity_type==='swim' ? 'meters' : 'km')
 
     return (
-        <Card margin={margin}>
+        <Card onClick={ onClick } routeId={routeData.id} >
             {/* top side */}
             <div>
                 <h3>{ routeData?.title}</h3>
