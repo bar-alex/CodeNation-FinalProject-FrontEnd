@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // import Leaderboard from "./components/Leaderboard/Leaderboard";
 // import data from "./components/Leaderboard/LeaderboardData";
 // import BackgroundImage from "..src/assets/cycling.jpg"
-import LoginUser from '../LoginUser';
+import LoginUser from './LoginUser';
 
 
 const Title = styled.div`

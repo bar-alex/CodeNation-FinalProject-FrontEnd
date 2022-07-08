@@ -50,7 +50,7 @@ const Time = styled.span`
 
 
 
-const RouteCard = ({ venue, difficulty, distance, time, event }) => {
+const RouteCard2 = ({ venue, difficulty, distance, time, event }) => {
     return (
         <Container>
             <HeaderContainer>
@@ -67,4 +67,4 @@ const RouteCard = ({ venue, difficulty, distance, time, event }) => {
     )
 };
 
-export default RouteCard;
+export default RouteCard2;
