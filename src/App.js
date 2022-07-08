@@ -21,7 +21,7 @@ import Navbar from './components/Navbar';
 // import RouteCard from "./components/RouteCard.js";
 // import RoutesMap from "./components/RoutesMap";
 // import leaderboardData from "./components/Leaderboard/LeaderboardData";
-// import routesData from "./components/Routes/RotesData";
+// import routesData from "./components/ Routes/RotesData";
 // import Setup_insertRoutesToDb from "./components/Setup__insertRoutesToDb";
 
 // const onRowClicked = (item, index) => {
@@ -38,7 +38,8 @@ const App = () => {
   // user object: username, email, full_name
   const [user, setUser] = useState(undefined);
 
-  const [routes, setRoutes] = useState([]);
+  // the routes
+  const [routes, setRoutes] = useState([])
 
   useEffect( ()=>{
     const token = getUserToken();
@@ -46,6 +47,11 @@ const App = () => {
     // console.log('-> App - token: ',token, '\n-> user: ',user?.username);
 
     retrieveAllRoutes( setRoutes )
+
+    
+    // get the routes and fill the routes state
+    retrieveAllRoutes( setRoutes )
+
   },[])
 
 
@@ -63,7 +69,7 @@ const App = () => {
         <DomRoutes>
           {/* <DomRoute path="/" element={ user ? <Dashboard user={user} setUser={setUser} /> : <LandingPage /> } /> */}
           <DomRoute path="/" element={ <LandingPage /> } />
-          <DomRoute path="/routes"      element={<RoutesList user={user} setUser={setUser} />} />
+          <DomRoute path="/routes"      element={<RoutesList user={user} setUser={setUser} routes={routes} />} />
           <DomRoute path="/leaderboard" element={<Leaderboard user={user} setUser={setUser} />} />
         </DomRoutes>
       </div>
