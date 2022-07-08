@@ -21,6 +21,11 @@ const NavContainer = styled.nav`
     align-items: center;
     font-size: 1.2rem;
 
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    /* margin-bottom: 60px; */
+
     #navbar-logo {
         color: #fff;
         justify-self: start;
@@ -163,10 +168,12 @@ const Navbar = ( {user, setUser} ) => {
     return(
         <NavContainer clicked={clicked}>
 
+            
             <div id="navbar-logo">
                 <h1>Fitverse</h1>
                 <img src={logo} alt="logo" />
             </div>
+            
 
             <div id="menu-icon" onClick={handleClick}>
                 { clicked ? <FaTimes/> : <FaBars/> }
