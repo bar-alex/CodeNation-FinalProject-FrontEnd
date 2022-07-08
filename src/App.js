@@ -11,6 +11,7 @@ import LandingPage  from "./components/LandingPage";
 // import Dashboard    from "./components/Dashboard/Dashboard";
 import RoutesList   from "./components/RoutesList";
 import Leaderboard  from "./components/Leaderboard/Leaderboard";
+import RouteActivities from './components/RouteActivities';
 
 
 // import RouteActivities from './components/RouteActivities';
@@ -34,7 +35,11 @@ const App = () => {
   const [user, setUser] = useState(undefined);
 
   // the routes
-  const [routes, setRoutes] = useState([])
+  const [routes, setRoutes] = useState([]);
+
+  // the list of activities
+  const [activities, setActivities] = useState([]);
+
 
   useEffect( ()=>{
     const token = getUserToken();
@@ -61,6 +66,16 @@ const App = () => {
           <DomRoute path="/" element={ <LandingPage /> } />
           <DomRoute path="/routes"      element={<RoutesList user={user} setUser={setUser} routes={routes} />} />
           <DomRoute path="/leaderboard" element={<Leaderboard user={user} setUser={setUser} />} />
+
+          <DomRoute path="/route-activities/:route_name" element={
+              <RouteActivities 
+                user={user} 
+                routes={routes} 
+                activities={activities} 
+                setActivities={setActivities} 
+              />
+              } 
+            />
         </DomRoutes>
       </div>
     );

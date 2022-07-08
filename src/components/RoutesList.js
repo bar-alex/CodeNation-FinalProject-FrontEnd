@@ -2,7 +2,10 @@ import { useState } from 'react';
 // import { Row as BootRow } from 'react-bootstrap';
 // import BootContainer from 'react-bootstrap/Container';
 import styled, {css} from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+
 import RouteCard from './RouteCard';
+import RoutesMap from "./RoutesMap";
 
 
 // just to test - remove later
@@ -18,6 +21,8 @@ const Container = styled.div`
 const ElementContainer = styled.div`
     /* border: 1px solid red; */
     /* display: inline-flex; */
+    width: 50%;
+
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
@@ -54,6 +59,15 @@ const Title = styled.h1`
     padding: 20px;
 `;
 
+const DivContent = styled.div`
+    display: flex;
+
+    #map-div {
+        width: 50%;
+    }
+
+`;
+
 
 
 // routes[], user{}, setUser()
@@ -62,12 +76,12 @@ const RoutesList = ({ routes: data, user, setUser }) => {
     const [selected, setSelected] = useState("all");
     // const [filtered, setFiltered] = useState([]);
 
-    // useEffect(() => {
-    //     if (selected === "all") setFiltered(data)
-    //     else if (selected === "cycle") setFiltered(data.filter(e => e.activity_type === "cycle"))
-    //     else if (selected === "swim") setFiltered(data.filter(e => e.activity_type === "swim"))
-    //     else setFiltered(data.filter(e => e.activity_type === "run"))
-    // }, [selected]) // eslint-disable-line react-hooks/exhaustive-deps
+    const navigate = useNavigate();
+
+    const openRouteActivities = ( {route_name, userId} ) => {
+        console.log('openRouteActivities called with: ',route_name, userId);
+        navigate(`/route-activities/${route_name}`)
+    }
 
 
     return (
@@ -90,21 +104,27 @@ const RoutesList = ({ routes: data, user, setUser }) => {
 
             </TabContainer>
 
+            <DivContent>
+                <ElementContainer fluid>
+                        {data.map((it, idx) =>
+                                (it.activity_type === selected || selected === "all") 
+                                && <RouteCard key={idx} routeData = { 
+                                    { 
+                                        title:          it.title, 
+                                        activity_type:  it.activity_type, 
+                                        difficulty:     it.difficulty, 
+                                        distance:       it.distance, 
+                                        time:           it.time, 
+                                    } 
+                                } onClick={ (_) => openRouteActivities({route_name: it.route_name, userId: user.id}) } />
+                            )}
+                </ElementContainer>
 
-            <ElementContainer fluid>
-                    {data.map((it, idx) =>
-                            (it.activity_type === selected || selected === "all") 
-                            && <RouteCard key={idx} routeData = { 
-                                { 
-                                    title:          it.title, 
-                                    activity_type:  it.activity_type, 
-                                    difficulty:     it.difficulty, 
-                                    distance:       it.distance, 
-                                    time:           it.time, 
-                                } 
-                            } />
-                        )}
-            </ElementContainer>
+                <div id="map-div">
+                    <RoutesMap allRoutes={ data } />
+                </div>
+
+            </DivContent>
 
         </Container>
 
