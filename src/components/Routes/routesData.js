@@ -23,5 +23,4 @@ const RoutesData = [
 
 ]
 
-
 export default RoutesData;

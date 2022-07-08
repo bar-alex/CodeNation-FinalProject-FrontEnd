@@ -3,22 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 // import Leaderboard from "./components/Leaderboard/Leaderboard";
 // import data from "./components/Leaderboard/LeaderboardData";
-import Navbar from "../Navbar/Navbar";
-import BackgroundImage from "./assets/landingPage/landingPage3.jpg"
+// import BackgroundImage from "..src/assets/cycling.jpg"
 import LoginUser from '../LoginUser';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from "react-router-dom";
-import App from './App';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
-);
-
 
 
 const Title = styled.div`
@@ -53,14 +39,14 @@ const Spacer = styled.div`
   padding-bottom: 25%;
 `
 
-const Background = styled.div`
-  z-index: bottom;
-  background: url(${BackgroundImage});
-  -webkit-background-height: cover; 
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  `
+// const Background = styled.div`
+//   z-index: bottom;
+//   background: url(${BackgroundImage});
+//   -webkit-background-height: cover; 
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
+//   `
 
 const TopDiv = styled.div`
   /* color: white; */
@@ -90,7 +76,7 @@ const LandingPage = () => {
 
     
 
-        <Background>
+        {/* <Background> */}
         <Title>
           <h1>Strider</h1>
         </Title>
@@ -121,7 +107,7 @@ const LandingPage = () => {
         
 
           <Spacer />
-        </Background>
+        {/* </Background> */}
         <TopDiv>
           
         </TopDiv>

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { FaRunning } from "react-icons/fa";
 import { BiCycling } from "react-icons/bi";
 import { GrSwim } from "react-icons/gr";

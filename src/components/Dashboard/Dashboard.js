@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../Navbar/Navbar';
-import styled, { css } from 'styled-components';
+// import Navbar from '../Navbar/Navbar';
+import styled from 'styled-components';
 import profilePhoto from "../../assets/profile.jpg";
 import { Container, Row, Col } from 'react-bootstrap';
 import LineChart from "../LineChart";

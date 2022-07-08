@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Routes as DomRoutes, Route as DomRoute, Link } from "react-router-dom";
+import { Routes as DomRoutes, Route as DomRoute } from "react-router-dom";
 import styled from 'styled-components';
 import './App.css';
 import { getUserToken, retrieveUser } from './util/utilUser.js';
 
-import Routes from "./components/Routes/Routes";
+// import Routes from "./components/Routes/Routes";
 import Navbar from "./components/Navbar/Navbar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import leaderboardData from "./components/Leaderboard/LeaderboardData";
-import RoutesData from "./components/Routes/routesData";
+import RouteCard from "./components/RouteCard";
 import Leaderboard from "./components/Leaderboard/Leaderboard";
-import RouteCard from './components/Routes/RouteCard';
+import LandingPage from './components/Landing/LandingPage';
 
 // import AmodalTest from "./components/AmodalTest.js";
 // import VerticalBarChart from "./components/VerticalBarChart";
@@ -27,9 +27,9 @@ const Boardtainer = styled.div`
   padding: 20px;
 `;
 
-const onRowClicked = (item, index) => {
-    console.log(item, index);
-  }
+// const onRowClicked = (item, index) => {
+//     console.log(item, index);
+//   }
   
 
   const App = () => {
@@ -50,9 +50,9 @@ const onRowClicked = (item, index) => {
     // const verticalValues = [];
   
     // this is to test the linechart
-    const horizLabels=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Someday"];
-    const vertLabel="M";
-    const vertValues=[33, 53, 85, 41, 44, 65, 71];
+    // const horizLabels=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Someday"];
+    // const vertLabel="M";
+    // const vertValues=[33, 53, 85, 41, 44, 65, 71];
     
     const testRouteData =  {  
         title: "Sample title 2", 
@@ -70,28 +70,28 @@ const onRowClicked = (item, index) => {
           <Navbar user={user} setUser={setUser} />
         </div>
         <DomRoutes>
-        <DomRoute path="/" element={<Dashboard />} />
-        <DomRoute path="/routes" element={<RoutesData data={RoutesData} />} />
-        <DomRoute path="/leaderboard" element={<Leaderboard items={leaderboardData} onClick={() => {}} />} />
+        <DomRoute path="/" element={ user ? <Dashboard /> : <LandingPage /> } />
+        <DomRoute path="/routes" element={<RouteCard routeData={testRouteData} />} />
+        <DomRoute path="/leaderboard" element={<Leaderboard items={leaderboardData} onClick={() => { }} />} />
         </DomRoutes>
         {/* <Setup_insertRoutesToDb /> */}
 
         <RouteCard routeData = { testRouteData } />
           <h1>Fitness App</h1>
-            {/* <Boardtainer>
-                <Leaderboard items={data} onClick={onRowClicked} />
+            <Boardtainer>
+                {/* <Leaderboard items={data} onClick={onRowClicked} /> */}
             </Boardtainer>
-          <div style = { {width:"600px"} }>
+          {/* <div style = { {width:"600px"} }>
             <LineChart 
             horizLabels={horizLabels}  
             vertLabel={vertLabel} 
             vertValues={vertValues} />
-          </div>
-          <div>
-            <Achievements />
-            <Activities />
-            <Routes />
           </div> */}
+          <div>
+            {/* <Achievements />
+            <Activities />
+            <Routes /> */}
+          </div>
           {/* <VerticalBarChart /> */}
         </div>
         

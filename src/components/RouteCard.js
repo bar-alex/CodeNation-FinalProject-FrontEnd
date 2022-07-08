@@ -12,18 +12,18 @@ const RouteCard = ( { routeData } ) => {
         <Card>
             {/* top side */}
             <div>
-                <h2>{ routeData.title}</h2>
+                <h2>{ routeData?.title}</h2>
                 <h2>{ 
-                    routeData.activity_type==='run'?<FaRunning/>: 
-                    routeData.activity_type==='cycle'?<FaBiking/>:<FaSwimmer/> 
+                    routeData?.activity_type==='run'?<FaRunning/>: 
+                    routeData?.activity_type==='cycle'?<FaBiking/>:<FaSwimmer/> 
                 }</h2>
             </div>
 
             {/* bottom side */}
             <div>
-                <p>{routeData.difficulty}</p>
-                <p>{routeData.distance}</p>
-                <p>{routeData.time}</p>
+                <p>{routeData?.difficulty}</p>
+                <p>{routeData?.distance}</p>
+                <p>{routeData?.time}</p>
             </div>
         </Card>
     )
