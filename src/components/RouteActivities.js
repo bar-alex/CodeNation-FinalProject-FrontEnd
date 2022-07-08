@@ -6,12 +6,23 @@ import { FaBiking } from "react-icons/fa";
 
 
 
-
+// the title
+// the map
+// the chart || info about the route
+// the activities || the achivemenets
 
 
 
 const RouteActivities = () => {
 
+
+
+    return (
+
+
+
+
+    );
 };
 
 export default RouteActivities;
