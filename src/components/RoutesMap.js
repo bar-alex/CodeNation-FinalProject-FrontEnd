@@ -14,12 +14,14 @@ const DivStyled = styled.div`
     border: 1px solid rgb(0,0,0,.8);
     box-shadow: 10px 10px 14px -12px rgba(0,0,0,0.68);
 
-    .map{
+    /* .map{ */
+    #map-div{
         width: 100%;
         height: 50vh;
     }
 
-    .map-container{
+    /* .map-container{ */
+    #map-container-google{
         width: 100%;
         height: 50vh;
     }
@@ -58,8 +60,11 @@ const RoutesMap = ( {allRoutes, markerCoord} ) => {
     // <GoogleMap zoom={7} center = { center } mapContainerClassName= "map-container" options={options}>
 
     // const { isLoaded } = useLoadScript({ googleMapsApiKey: "AIzaSyC4rF0twpG2XX77FJIYfQKVDN9IoevXLys", })
-    const { isLoaded } = useJsApiLoader({id: 'google-map-script',googleMapsApiKey: process.env.REACT_APP_FRONTEND_GOOGLE_API_KEY})
+    const objApiLoader = useJsApiLoader({id: 'google-map-script',googleMapsApiKey: process.env.REACT_APP_FRONTEND_GOOGLE_API_KEY})
+    const { isLoaded } = objApiLoader
     // if (!isLoaded) return <div>Loading...</div>
+
+    // console.log('RoutesMap(), isLoaded, objApiLoader: ', isLoaded, objApiLoader);
 
     return isLoaded ? (
             <DivStyled>
@@ -67,10 +72,11 @@ const RoutesMap = ( {allRoutes, markerCoord} ) => {
                 <div className="controls">
                     {/* <h1>controls</h1> */}
                 </div>
-                <div className="map">
+                <div id="map-div" className="map">
                     <GoogleMap zoom={10} 
                         center = { center } 
                         mapContainerClassName= "map-container" 
+                        id = "map-container-google"
                         options={ options }
                     >
 

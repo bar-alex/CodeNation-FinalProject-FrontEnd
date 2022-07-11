@@ -131,7 +131,7 @@ const NavContainer = styled.nav`
             /* text-shadow: #2e2e2e 0 4px 5px; */
 
             /* .nav-menu.active */
-            ${ (props)=> !props.clicked ? "" : "background: #6668f4;"}      /* backgroud color when the menu is active ?! */
+            ${ (props)=> !props.clicked ? "" : "background: #6668f4;"}      /* background color when the menu is active ?! */
             ${ (props)=> !props.clicked ? "" : "left: 0; opacity: 1;transition: all 0.5s ease; z-index: 1;"}
         }
 
