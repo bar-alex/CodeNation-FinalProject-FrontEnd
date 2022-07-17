@@ -1,4 +1,4 @@
-# Fitverse - our team's full-stack project for the Code Nation Bootcamp
+# Fitverse - full-stack team project for the Code Nation Bootcamp
 
 It's an app created in ReactJS that will allow users to register on the website and record their fitness activities. It's meant more as a proof of concept and it has some limited functionality, for example, the accepted activities are "Running", "Cycling" and "Swimming", The available routes are pre-recorded and the users can't edit them or add any more.
 
