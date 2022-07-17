@@ -1,4 +1,21 @@
-# Getting Started with Create React App
+# Fitverse - our team's full-stack project for the Code Nation Bootcamp
+
+It's an app created in ReactJS that will allow users to register on the website and record their fitness activities. It's meant more as a proof of concept and it has some limited functionality, for example, the accepted activities are "Running", "Cycling" and "Swimming", The available routes are pre-recorded and the users can't edit them or add any more.
+
+This is the **front-end** of the app, for the back-end see this repository: [CodeNation-FinalProject-BackEnd](https://github.com/bar-alex/CodeNation-FinalProject-BackEnd).
+
+A user can register themselves, log in if they have already been registered, can change their information or delete their account.
+Once logged in, they will stay logged in between sessions for up to 7 days, or until they log out.
+To change their information or delete their account, they must provide their password for authorisation.
+
+On the routes page, they will observe a list of cards, each card representing a route for training, next to them is a google map that will show the location of all the available routes.
+ 
+By selecting a route, a new page will open that will display some information about that route and a list of all the activities the user has registered for this route. The user will be able to record a new activity in the list for the training they have done.
+
+
+## Getting Started with Create React App
+<details>
+  <summary>Click to show details.</summary>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -68,3 +85,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</details>
